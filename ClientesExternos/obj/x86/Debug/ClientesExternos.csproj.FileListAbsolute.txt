@@ -1,0 +1,7 @@
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\ClientesExternos.exe
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\ClientesExternos.pdb
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.Properties.Resources.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.csproj.GenerateResource.Cache
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.exe
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.pdb
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.Frm_Login.resources
