@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ClientextModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ClientextModelStoreContainer">
+          <EntitySet Name="articulos" EntityType="ClientextModel.Store.articulos" store:Type="Tables" Schema="friolala_clientext" />
+          <EntitySet Name="clientes" EntityType="ClientextModel.Store.clientes" store:Type="Tables" Schema="friolala_clientext" />
+          <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
+          <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
+          <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
+        </EntityContainer>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="id_cliente" Type="uint" Nullable="false" />
+          <Property Name="id_usuario_creador" Type="uint" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_usuario_ultima_modificacion" Type="uint" />
+          <Property Name="fecha_ultima_modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="serie" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="id_usuario_ultima_modificacion" Type="int" />
+          <Property Name="fecha_ultima_modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tarimas_entradas">
+          <Key>
+            <PropertyRef Name="id_tarima" />
+          </Key>
+          <Property Name="id_tarima" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="uint" Nullable="false" />
+          <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="num_cajas" Type="usmallint" Nullable="false" />
+          <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+          <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="tarimas_salidas">
+          <Key>
+            <PropertyRef Name="id_tarima" />
+          </Key>
+          <Property Name="id_tarima" Type="uint" Nullable="false" />
+          <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="num_cajas" Type="usmallint" Nullable="false" />
+          <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_completo" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="nombre_usuario" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="contrasenia" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="permisos" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClientextModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ClientextEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="articulos" EntityType="ClientextModel.articulos" />
+          <EntitySet Name="clientes" EntityType="ClientextModel.clientes" />
+          <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.tarimas_entradas" />
+          <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.tarimas_salidas" />
+          <EntitySet Name="usuarios" EntityType="ClientextModel.usuarios" />
+        </EntityContainer>
+        <EntityType Name="articulos">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_cliente" Nullable="false" />
+          <Property Type="Int64" Name="id_usuario_creador" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_usuario_ultima_modificacion" />
+          <Property Type="DateTime" Name="fecha_ultima_modificacion" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Type="Int64" Name="id_cliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="serie" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_usuario_creador" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
+          <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="id_usuario_ultima_modificacion" />
+          <Property Type="DateTime" Name="fecha_ultima_modificacion" />
+        </EntityType>
+        <EntityType Name="tarimas_entradas">
+          <Key>
+            <PropertyRef Name="id_tarima" />
+          </Key>
+          <Property Type="Int64" Name="id_tarima" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="id_cliente" Nullable="false" />
+          <Property Type="String" Name="codigo_articulo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="num_cajas" Nullable="false" />
+          <Property Type="Decimal" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" />
+          <Property Type="String" Name="numero_etiqueta" MaxLength="13" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tarimas_salidas">
+          <Key>
+            <PropertyRef Name="id_tarima" />
+          </Key>
+          <Property Type="Int64" Name="id_tarima" Nullable="false" />
+          <Property Type="String" Name="codigo_articulo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="num_cajas" Nullable="false" />
+          <Property Type="Decimal" Name="peso" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_salida" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Type="Int64" Name="id_usuario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre_completo" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombre_usuario" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="contrasenia" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="permisos" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClientextModelStoreContainer" CdmEntityContainer="ClientextEntities">
+          <EntitySetMapping Name="articulos">
+            <EntityTypeMapping TypeName="ClientextModel.articulos">
+              <MappingFragment StoreEntitySet="articulos">
+                <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+                <ScalarProperty Name="id_usuario_ultima_modificacion" ColumnName="id_usuario_ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="ClientextModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+                <ScalarProperty Name="id_usuario_ultima_modificacion" ColumnName="id_usuario_ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tarimas_entradas">
+            <EntityTypeMapping TypeName="ClientextModel.tarimas_entradas">
+              <MappingFragment StoreEntitySet="tarimas_entradas">
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+                <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tarimas_salidas">
+            <EntityTypeMapping TypeName="ClientextModel.tarimas_salidas">
+              <MappingFragment StoreEntitySet="tarimas_salidas">
+                <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+                <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
+                <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="ClientextModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="permisos" ColumnName="permisos" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ModeloClientesExternos">
+        <EntityTypeShape EntityType="ClientextModel.articulos" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="ClientextModel.clientes" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="ClientextModel.tarimas_entradas" Width="1.5" PointX="4.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="ClientextModel.tarimas_salidas" Width="1.5" PointX="0.75" PointY="4.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="ClientextModel.usuarios" Width="1.5" PointX="2.75" PointY="4.75" Height="2.1725878906249996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

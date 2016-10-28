@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClientextModelStoreContainer" CdmEntityContainer="ClientextEntities">
+    <EntitySetMapping Name="articulos">
+      <EntityTypeMapping TypeName="ClientextModel.articulos">
+        <MappingFragment StoreEntitySet="articulos">
+          <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+          <ScalarProperty Name="id_usuario_ultima_modificacion" ColumnName="id_usuario_ultima_modificacion" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="ClientextModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="fecha_ultima_modificacion" ColumnName="fecha_ultima_modificacion" />
+          <ScalarProperty Name="id_usuario_ultima_modificacion" ColumnName="id_usuario_ultima_modificacion" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarimas_entradas">
+      <EntityTypeMapping TypeName="ClientextModel.tarimas_entradas">
+        <MappingFragment StoreEntitySet="tarimas_entradas">
+          <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+          <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarimas_salidas">
+      <EntityTypeMapping TypeName="ClientextModel.tarimas_salidas">
+        <MappingFragment StoreEntitySet="tarimas_salidas">
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+          <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
+          <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="ClientextModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="permisos" ColumnName="permisos" />
+          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

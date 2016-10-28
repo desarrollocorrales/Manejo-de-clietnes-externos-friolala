@@ -5,3 +5,12 @@ G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\Cl
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.exe
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.pdb
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.Frm_Login.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.Frm_Configuracion.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\ClientesExternos.exe.config
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.Frm_Principal.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.exe.licenses
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Articulos.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.csprojResolveAssemblyReference.cache
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Clientes.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Usuarios.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Entradas.resources

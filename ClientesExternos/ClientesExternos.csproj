@@ -34,8 +34,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,17 +57,78 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\ModeloClientesExternos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloClientesExternos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\Frm_Configuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUIs\Frm_Configuracion.Designer.cs">
+      <DependentUpon>Frm_Configuracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIs\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUIs\Frm_Login.Designer.cs">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIs\Frm_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUIs\Frm_Principal.Designer.cs">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Entradas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Entradas.Designer.cs">
+      <DependentUpon>Frm_Entradas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Articulos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Articulos.Designer.cs">
+      <DependentUpon>Frm_Articulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Clientes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Clientes.Designer.cs">
+      <DependentUpon>Frm_Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Usuarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Usuarios.Designer.cs">
+      <DependentUpon>Frm_Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DatosDeApp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUIs\Frm_Configuracion.resx">
+      <DependentUpon>Frm_Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUIs\Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\Frm_Principal.resx">
+      <DependentUpon>Frm_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Entradas.resx">
+      <DependentUpon>Frm_Entradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Articulos.resx">
+      <DependentUpon>Frm_Articulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Clientes.resx">
+      <DependentUpon>Frm_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Usuarios.resx">
+      <DependentUpon>Frm_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -65,7 +137,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <EntityDeploy Include="Entity\ModeloClientesExternos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloClientesExternos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -77,7 +155,40 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entity\" />
+    <Folder Include="DAL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garbage_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\client_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\meat_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\truck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forklift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar_26.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

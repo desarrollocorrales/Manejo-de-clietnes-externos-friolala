@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClientextModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ClientextModelStoreContainer">
+    <EntitySet Name="articulos" EntityType="ClientextModel.Store.articulos" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="clientes" EntityType="ClientextModel.Store.clientes" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
+  </EntityContainer>
+  <EntityType Name="articulos">
+    <Key>
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="80" />
+    <Property Name="id_cliente" Type="uint" Nullable="false" />
+    <Property Name="id_usuario_creador" Type="uint" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+    <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="id_usuario_ultima_modificacion" Type="uint" />
+    <Property Name="fecha_ultima_modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="serie" Type="char" Nullable="false" MaxLength="3" />
+    <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+    <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="id_usuario_ultima_modificacion" Type="int" />
+    <Property Name="fecha_ultima_modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tarimas_entradas">
+    <Key>
+      <PropertyRef Name="id_tarima" />
+    </Key>
+    <Property Name="id_tarima" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="uint" Nullable="false" />
+    <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="num_cajas" Type="usmallint" Nullable="false" />
+    <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
+    <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="tarimas_salidas">
+    <Key>
+      <PropertyRef Name="id_tarima" />
+    </Key>
+    <Property Name="id_tarima" Type="uint" Nullable="false" />
+    <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="num_cajas" Type="usmallint" Nullable="false" />
+    <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_completo" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="nombre_usuario" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="contrasenia" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="permisos" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+</Schema>
