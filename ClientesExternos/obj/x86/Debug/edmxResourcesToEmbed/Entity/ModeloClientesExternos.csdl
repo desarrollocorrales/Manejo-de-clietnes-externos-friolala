@@ -4,15 +4,58 @@
     <EntitySet Name="articulos" EntityType="ClientextModel.articulos" />
     <EntitySet Name="clientes" EntityType="ClientextModel.clientes" />
     <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.tarimas_entradas" />
-    <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.tarimas_salidas" />
     <EntitySet Name="usuarios" EntityType="ClientextModel.usuarios" />
+    <AssociationSet Name="fk_articulo" Association="ClientextModel.fk_articulo">
+      <End Role="articulos" EntitySet="articulos" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario1" Association="ClientextModel.fk_usuario1">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario2" Association="ClientextModel.fk_usuario2">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente" Association="ClientextModel.fk_cliente">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario1c" Association="ClientextModel.fk_usuario1c">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario2c" Association="ClientextModel.fk_usuario2c">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario" Association="ClientextModel.fk_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.tarimas_salidas" />
+    <AssociationSet Name="fk_articulo_s" Association="ClientextModel.fk_articulo_s">
+      <End Role="articulos" EntitySet="articulos" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_s" Association="ClientextModel.fk_cliente_s">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tarima_s" Association="ClientextModel.fk_tarima_s">
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_s" Association="ClientextModel.fk_usuario_s">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="articulos">
     <Key>
-      <PropertyRef Name="codigo" />
-      <PropertyRef Name="nombre" />
-      <PropertyRef Name="id_cliente" />
+      <PropertyRef Name="id_articulo" />
     </Key>
+    <Property Type="Int64" Name="id_articulo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="codigo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="nombre" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
     <Property Type="Int64" Name="id_cliente" Nullable="false" />
@@ -21,6 +64,10 @@
     <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Type="Int64" Name="id_usuario_ultima_modificacion" />
     <Property Type="DateTime" Name="fecha_ultima_modificacion" />
+    <NavigationProperty Name="tarimas_entradas" Relationship="ClientextModel.fk_articulo" FromRole="articulos" ToRole="tarimas_entradas" />
+    <NavigationProperty Name="usuarios" Relationship="ClientextModel.fk_usuario1" FromRole="articulos" ToRole="usuarios" />
+    <NavigationProperty Name="usuarios1" Relationship="ClientextModel.fk_usuario2" FromRole="articulos" ToRole="usuarios" />
+    <NavigationProperty Name="tarimas_salidas" Relationship="ClientextModel.fk_articulo_s" FromRole="articulos" ToRole="tarimas_salidas" />
   </EntityType>
   <EntityType Name="clientes">
     <Key>
@@ -29,11 +76,15 @@
     <Property Type="Int64" Name="id_cliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="nombre" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="serie" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="id_usuario_creador" Nullable="false" />
+    <Property Type="Int64" Name="id_usuario_creador" Nullable="false" />
     <Property Type="DateTime" Name="fecha_creacion" Nullable="false" />
     <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="id_usuario_ultima_modificacion" />
+    <Property Type="Int64" Name="id_usuario_ultima_modificacion" />
     <Property Type="DateTime" Name="fecha_ultima_modificacion" />
+    <NavigationProperty Name="tarimas_entradas" Relationship="ClientextModel.fk_cliente" FromRole="clientes" ToRole="tarimas_entradas" />
+    <NavigationProperty Name="usuarios" Relationship="ClientextModel.fk_usuario1c" FromRole="clientes" ToRole="usuarios" />
+    <NavigationProperty Name="usuarios1" Relationship="ClientextModel.fk_usuario2c" FromRole="clientes" ToRole="usuarios" />
+    <NavigationProperty Name="tarimas_salidas" Relationship="ClientextModel.fk_cliente_s" FromRole="clientes" ToRole="tarimas_salidas" />
   </EntityType>
   <EntityType Name="tarimas_entradas">
     <Key>
@@ -41,21 +92,17 @@
     </Key>
     <Property Type="Int64" Name="id_tarima" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int64" Name="id_cliente" Nullable="false" />
-    <Property Type="String" Name="codigo_articulo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="id_articulo" Nullable="false" />
     <Property Type="Int32" Name="num_cajas" Nullable="false" />
     <Property Type="Decimal" Name="peso" Nullable="false" />
     <Property Type="DateTime" Name="fecha_ingreso" Nullable="false" />
     <Property Type="String" Name="numero_etiqueta" MaxLength="13" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tarimas_salidas">
-    <Key>
-      <PropertyRef Name="id_tarima" />
-    </Key>
-    <Property Type="Int64" Name="id_tarima" Nullable="false" />
-    <Property Type="String" Name="codigo_articulo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="num_cajas" Nullable="false" />
-    <Property Type="Decimal" Name="peso" Nullable="false" />
-    <Property Type="DateTime" Name="fecha_salida" Nullable="false" />
+    <Property Type="String" Name="numero_tarima_cliente" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="id_usuario" Nullable="false" />
+    <NavigationProperty Name="articulos" Relationship="ClientextModel.fk_articulo" FromRole="tarimas_entradas" ToRole="articulos" />
+    <NavigationProperty Name="clientes" Relationship="ClientextModel.fk_cliente" FromRole="tarimas_entradas" ToRole="clientes" />
+    <NavigationProperty Name="usuarios" Relationship="ClientextModel.fk_usuario" FromRole="tarimas_entradas" ToRole="usuarios" />
+    <NavigationProperty Name="tarimas_salidas" Relationship="ClientextModel.fk_tarima_s" FromRole="tarimas_entradas" ToRole="tarimas_salidas" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>
@@ -67,5 +114,160 @@
     <Property Type="String" Name="contrasenia" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="permisos" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="estatus" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="articulos" Relationship="ClientextModel.fk_usuario1" FromRole="usuarios" ToRole="articulos" />
+    <NavigationProperty Name="articulos1" Relationship="ClientextModel.fk_usuario2" FromRole="usuarios" ToRole="articulos" />
+    <NavigationProperty Name="clientes" Relationship="ClientextModel.fk_usuario1c" FromRole="usuarios" ToRole="clientes" />
+    <NavigationProperty Name="clientes1" Relationship="ClientextModel.fk_usuario2c" FromRole="usuarios" ToRole="clientes" />
+    <NavigationProperty Name="tarimas_entradas" Relationship="ClientextModel.fk_usuario" FromRole="usuarios" ToRole="tarimas_entradas" />
+    <NavigationProperty Name="tarimas_salidas" Relationship="ClientextModel.fk_usuario_s" FromRole="usuarios" ToRole="tarimas_salidas" />
   </EntityType>
+  <Association Name="fk_articulo">
+    <End Type="ClientextModel.articulos" Role="articulos" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_entradas" Role="tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulos">
+        <PropertyRef Name="id_articulo" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_articulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario1">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="1" />
+    <End Type="ClientextModel.articulos" Role="articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario_creador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario2">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="0..1" />
+    <End Type="ClientextModel.articulos" Role="articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario_ultima_modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente">
+    <End Type="ClientextModel.clientes" Role="clientes" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_entradas" Role="tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario1c">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="1" />
+    <End Type="ClientextModel.clientes" Role="clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="id_usuario_creador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario2c">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="0..1" />
+    <End Type="ClientextModel.clientes" Role="clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="id_usuario_ultima_modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_entradas" Role="tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tarimas_salidas">
+    <Key>
+      <PropertyRef Name="id_maniobra" />
+    </Key>
+    <Property Type="Int64" Name="id_maniobra" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="id_tarima" Nullable="false" />
+    <Property Type="Int64" Name="id_cliente" Nullable="false" />
+    <Property Type="Int64" Name="id_articulo" Nullable="false" />
+    <Property Type="Int32" Name="num_cajas" Nullable="false" />
+    <Property Type="Decimal" Name="peso" Nullable="false" />
+    <Property Type="DateTime" Name="fecha_salida" Nullable="false" />
+    <Property Type="Int64" Name="id_usuario" Nullable="false" />
+    <NavigationProperty Name="articulos" Relationship="ClientextModel.fk_articulo_s" FromRole="tarimas_salidas" ToRole="articulos" />
+    <NavigationProperty Name="clientes" Relationship="ClientextModel.fk_cliente_s" FromRole="tarimas_salidas" ToRole="clientes" />
+    <NavigationProperty Name="tarimas_entradas" Relationship="ClientextModel.fk_tarima_s" FromRole="tarimas_salidas" ToRole="tarimas_entradas" />
+    <NavigationProperty Name="usuarios" Relationship="ClientextModel.fk_usuario_s" FromRole="tarimas_salidas" ToRole="usuarios" />
+  </EntityType>
+  <Association Name="fk_articulo_s">
+    <End Type="ClientextModel.articulos" Role="articulos" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_salidas" Role="tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulos">
+        <PropertyRef Name="id_articulo" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_articulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_s">
+    <End Type="ClientextModel.clientes" Role="clientes" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_salidas" Role="tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tarima_s">
+    <End Type="ClientextModel.tarimas_entradas" Role="tarimas_entradas" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_salidas" Role="tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tarimas_entradas">
+        <PropertyRef Name="id_tarima" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_tarima" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_s">
+    <End Type="ClientextModel.usuarios" Role="usuarios" Multiplicity="1" />
+    <End Type="ClientextModel.tarimas_salidas" Role="tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Login));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             this.txbUsuario.Name = "txbUsuario";
             this.txbUsuario.Size = new System.Drawing.Size(250, 26);
             this.txbUsuario.TabIndex = 3;
-            this.txbUsuario.Text = "memo";
+            this.txbUsuario.Text = "pepe";
             // 
             // txbContrasenia
             // 
@@ -86,7 +87,7 @@
             this.txbContrasenia.PasswordChar = '*';
             this.txbContrasenia.Size = new System.Drawing.Size(250, 26);
             this.txbContrasenia.TabIndex = 5;
-            this.txbContrasenia.Text = "12345";
+            this.txbContrasenia.Text = "pepee";
             // 
             // label4
             // 
@@ -146,6 +147,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";

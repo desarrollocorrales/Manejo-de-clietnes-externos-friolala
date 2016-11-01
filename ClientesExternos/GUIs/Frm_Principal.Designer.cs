@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.NavBar = new DevExpress.XtraNavBar.NavBarControl();
             this.nbMenu = new DevExpress.XtraNavBar.NavBarGroup();
             this.itmArticulos = new DevExpress.XtraNavBar.NavBarItem();
@@ -53,7 +54,7 @@
             this.NavBar.Location = new System.Drawing.Point(0, 0);
             this.NavBar.Name = "NavBar";
             this.NavBar.OptionsNavPane.ExpandedWidth = 215;
-            this.NavBar.Size = new System.Drawing.Size(215, 561);
+            this.NavBar.Size = new System.Drawing.Size(215, 641);
             this.NavBar.TabIndex = 4;
             this.NavBar.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Caramel");
             // 
@@ -95,7 +96,7 @@
             this.itmEntradas.Appearance.Options.UseFont = true;
             this.itmEntradas.Caption = "Entradas de mercancía";
             this.itmEntradas.Name = "itmEntradas";
-            this.itmEntradas.SmallImage = global::ClientesExternos.Properties.Resources.forklift;
+            this.itmEntradas.SmallImage = ((System.Drawing.Image)(resources.GetObject("itmEntradas.SmallImage")));
             this.itmEntradas.Tag = "ENTRADAS";
             this.itmEntradas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmEntradas_LinkClicked);
             // 
@@ -107,6 +108,7 @@
             this.itmSalidas.Name = "itmSalidas";
             this.itmSalidas.SmallImage = global::ClientesExternos.Properties.Resources.truck;
             this.itmSalidas.Tag = "SALIDAS";
+            this.itmSalidas.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmSalidas_LinkClicked);
             // 
             // itmUsuarios
             // 
@@ -122,9 +124,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(1264, 641);
             this.Controls.Add(this.NavBar);
             this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "Frm_Principal";

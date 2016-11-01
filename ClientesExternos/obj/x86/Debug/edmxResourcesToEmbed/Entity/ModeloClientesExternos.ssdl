@@ -6,13 +6,56 @@
     <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
+    <AssociationSet Name="fk_articulo" Association="ClientextModel.Store.fk_articulo">
+      <End Role="articulos" EntitySet="articulos" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_s" Association="ClientextModel.Store.fk_articulo_s">
+      <End Role="articulos" EntitySet="articulos" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente" Association="ClientextModel.Store.fk_cliente">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_s" Association="ClientextModel.Store.fk_cliente_s">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tarima_s" Association="ClientextModel.Store.fk_tarima_s">
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario" Association="ClientextModel.Store.fk_usuario">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_s" Association="ClientextModel.Store.fk_usuario_s">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario1" Association="ClientextModel.Store.fk_usuario1">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario1c" Association="ClientextModel.Store.fk_usuario1c">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario2" Association="ClientextModel.Store.fk_usuario2">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario2c" Association="ClientextModel.Store.fk_usuario2c">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="articulos">
     <Key>
-      <PropertyRef Name="codigo" />
-      <PropertyRef Name="nombre" />
-      <PropertyRef Name="id_cliente" />
+      <PropertyRef Name="id_articulo" />
     </Key>
+    <Property Name="id_articulo" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="80" />
     <Property Name="id_cliente" Type="uint" Nullable="false" />
@@ -29,10 +72,10 @@
     <Property Name="id_cliente" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="serie" Type="char" Nullable="false" MaxLength="3" />
-    <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+    <Property Name="id_usuario_creador" Type="uint" Nullable="false" />
     <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
     <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
-    <Property Name="id_usuario_ultima_modificacion" Type="int" />
+    <Property Name="id_usuario_ultima_modificacion" Type="uint" />
     <Property Name="fecha_ultima_modificacion" Type="datetime" />
   </EntityType>
   <EntityType Name="tarimas_entradas">
@@ -41,21 +84,26 @@
     </Key>
     <Property Name="id_tarima" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="id_cliente" Type="uint" Nullable="false" />
-    <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="id_articulo" Type="uint" Nullable="false" />
     <Property Name="num_cajas" Type="usmallint" Nullable="false" />
     <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
     <Property Name="fecha_ingreso" Type="datetime" Nullable="false" />
     <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+    <Property Name="numero_tarima_cliente" Type="varchar" MaxLength="50" />
+    <Property Name="id_usuario" Type="uint" Nullable="false" />
   </EntityType>
   <EntityType Name="tarimas_salidas">
     <Key>
-      <PropertyRef Name="id_tarima" />
+      <PropertyRef Name="id_maniobra" />
     </Key>
+    <Property Name="id_maniobra" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="id_tarima" Type="uint" Nullable="false" />
-    <Property Name="codigo_articulo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="id_cliente" Type="uint" Nullable="false" />
+    <Property Name="id_articulo" Type="uint" Nullable="false" />
     <Property Name="num_cajas" Type="usmallint" Nullable="false" />
     <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
     <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+    <Property Name="id_usuario" Type="uint" Nullable="false" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>
@@ -68,4 +116,136 @@
     <Property Name="permisos" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
   </EntityType>
+  <Association Name="fk_articulo">
+    <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="1" />
+    <End Role="tarimas_entradas" Type="ClientextModel.Store.tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulos">
+        <PropertyRef Name="id_articulo" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_articulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_s">
+    <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="1" />
+    <End Role="tarimas_salidas" Type="ClientextModel.Store.tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulos">
+        <PropertyRef Name="id_articulo" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_articulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente">
+    <End Role="clientes" Type="ClientextModel.Store.clientes" Multiplicity="1" />
+    <End Role="tarimas_entradas" Type="ClientextModel.Store.tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_s">
+    <End Role="clientes" Type="ClientextModel.Store.clientes" Multiplicity="1" />
+    <End Role="tarimas_salidas" Type="ClientextModel.Store.tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tarima_s">
+    <End Role="tarimas_entradas" Type="ClientextModel.Store.tarimas_entradas" Multiplicity="1" />
+    <End Role="tarimas_salidas" Type="ClientextModel.Store.tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tarimas_entradas">
+        <PropertyRef Name="id_tarima" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_tarima" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="1" />
+    <End Role="tarimas_entradas" Type="ClientextModel.Store.tarimas_entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="tarimas_entradas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_s">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="1" />
+    <End Role="tarimas_salidas" Type="ClientextModel.Store.tarimas_salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="tarimas_salidas">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario1">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="1" />
+    <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario_creador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario1c">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="1" />
+    <End Role="clientes" Type="ClientextModel.Store.clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="id_usuario_creador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario2">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="0..1" />
+    <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_usuario_ultima_modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario2c">
+    <End Role="usuarios" Type="ClientextModel.Store.usuarios" Multiplicity="0..1" />
+    <End Role="clientes" Type="ClientextModel.Store.clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="id_usuario_ultima_modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

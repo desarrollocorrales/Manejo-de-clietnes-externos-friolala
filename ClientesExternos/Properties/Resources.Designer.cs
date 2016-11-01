@@ -123,6 +123,16 @@ namespace ClientesExternos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Friolala {
+            get {
+                object obj = ResourceManager.GetObject("Friolala", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap garbage_26 {
             get {
                 object obj = ResourceManager.GetObject("garbage_26", resourceCulture);
@@ -136,6 +146,26 @@ namespace ClientesExternos.Properties {
         internal static System.Drawing.Bitmap meat_26 {
             get {
                 object obj = ResourceManager.GetObject("meat_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printericon_26 {
+            get {
+                object obj = ResourceManager.GetObject("printericon_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap salida_26 {
+            get {
+                object obj = ResourceManager.GetObject("salida_26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

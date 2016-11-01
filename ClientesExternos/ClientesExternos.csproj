@@ -11,7 +11,8 @@
     <RootNamespace>ClientesExternos</RootNamespace>
     <AssemblyName>ClientesExternos</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -33,14 +34,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ClientesExternos.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v11.1.Core, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v11.1.Core, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v11.1.Core, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v11.1, Version=11.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +112,12 @@
     <Compile Include="GUIs\UserControls\Frm_Clientes.Designer.cs">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Salidas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Salidas.Designer.cs">
+      <DependentUpon>Frm_Salidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIs\UserControls\Frm_Usuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,8 +125,26 @@
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\DatosDeApp.cs" />
+    <Compile Include="Modelos\SalidasGrid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptEntrada.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEntrada.Designer.cs">
+      <DependentUpon>rptEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptSalida.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptSalida.Designer.cs">
+      <DependentUpon>rptSalida.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUIs\Frm_Configuracion.resx">
       <DependentUpon>Frm_Configuracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,25 +163,32 @@
     <EmbeddedResource Include="GUIs\UserControls\Frm_Clientes.resx">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Salidas.resx">
+      <DependentUpon>Frm_Salidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUIs\UserControls\Frm_Usuarios.resx">
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Reportes\rptEntrada.resx">
+      <DependentUpon>rptEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptSalida.resx">
+      <DependentUpon>rptSalida.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <EntityDeploy Include="Entity\ModeloClientesExternos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloClientesExternos.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Properties\DataSources\ClientesExternos.Entity.tarimas_entradas.datasource" />
+    <None Include="Properties\DataSources\ClientesExternos.Entity.tarimas_salidas.datasource" />
+    <None Include="Properties\DataSources\ClientesExternos.Modelos.SalidasGrid.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -185,10 +230,26 @@
     <None Include="Resources\truck.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\eliminar_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-icon_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer-icon_261.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printericon_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Friolala.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\forklift.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\eliminar_26.png" />
+    <Content Include="AppIcon.ico" />
+    <None Include="Resources\salida_26.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,26 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cmbClientes = new System.Windows.Forms.ComboBox();
+            this.cmbArticulos = new System.Windows.Forms.ComboBox();
+            this.txbNumCajas = new System.Windows.Forms.TextBox();
+            this.txbPeso = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.gridTarimas = new DevExpress.XtraGrid.GridControl();
+            this.tarimasentradasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvTarimas = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.colarticulos = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colnum_cajas = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colpeso = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colfecha_ingreso = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colnumero_tarima_cliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dtpFechaRecepcion = new System.Windows.Forms.DateTimePicker();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txbNumTarimaCliente = new System.Windows.Forms.TextBox();
+            this.txbFecha = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridTarimas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarimasentradasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTarimas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +74,7 @@
             this.btnCerrar.TabIndex = 19;
             this.btnCerrar.Text = "X";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label1
             // 
@@ -90,6 +102,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(98, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 18);
@@ -100,55 +113,62 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(95, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 18);
+            this.label4.Size = new System.Drawing.Size(61, 18);
             this.label4.TabIndex = 21;
             this.label4.Text = "Artículo:";
             // 
-            // comboBox1
+            // cmbClientes
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(161, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(581, 26);
-            this.comboBox1.TabIndex = 22;
+            this.cmbClientes.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClientes.FormattingEnabled = true;
+            this.cmbClientes.Location = new System.Drawing.Point(161, 66);
+            this.cmbClientes.Name = "cmbClientes";
+            this.cmbClientes.Size = new System.Drawing.Size(581, 26);
+            this.cmbClientes.TabIndex = 22;
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cmbArticulos
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(161, 101);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(581, 26);
-            this.comboBox2.TabIndex = 23;
+            this.cmbArticulos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbArticulos.FormattingEnabled = true;
+            this.cmbArticulos.Location = new System.Drawing.Point(161, 101);
+            this.cmbArticulos.Name = "cmbArticulos";
+            this.cmbArticulos.Size = new System.Drawing.Size(581, 26);
+            this.cmbArticulos.TabIndex = 23;
             // 
-            // textBox1
+            // txbNumCajas
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(161, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 26);
-            this.textBox1.TabIndex = 24;
+            this.txbNumCajas.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txbNumCajas.Location = new System.Drawing.Point(161, 133);
+            this.txbNumCajas.MaxLength = 3;
+            this.txbNumCajas.Name = "txbNumCajas";
+            this.txbNumCajas.Size = new System.Drawing.Size(121, 26);
+            this.txbNumCajas.TabIndex = 24;
+            this.txbNumCajas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbNumCajas_KeyPress);
             // 
-            // textBox2
+            // txbPeso
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(336, 133);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 26);
-            this.textBox2.TabIndex = 25;
+            this.txbPeso.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txbPeso.Location = new System.Drawing.Point(336, 133);
+            this.txbPeso.MaxLength = 8;
+            this.txbPeso.Name = "txbPeso";
+            this.txbPeso.Size = new System.Drawing.Size(121, 26);
+            this.txbPeso.TabIndex = 25;
+            this.txbPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPeso_KeyPress);
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(35, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 18);
+            this.label5.Size = new System.Drawing.Size(121, 18);
             this.label5.TabIndex = 27;
             this.label5.Text = "Cantidad de Cajas:";
             // 
@@ -177,94 +197,241 @@
             this.gridTarimas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridTarimas.Location = new System.Drawing.Point(161, 165);
+            this.gridTarimas.DataSource = this.tarimasentradasBindingSource;
+            this.gridTarimas.Location = new System.Drawing.Point(161, 201);
             this.gridTarimas.MainView = this.gvTarimas;
             this.gridTarimas.Name = "gridTarimas";
-            this.gridTarimas.Size = new System.Drawing.Size(581, 296);
+            this.gridTarimas.Size = new System.Drawing.Size(581, 255);
             this.gridTarimas.TabIndex = 31;
             this.gridTarimas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvTarimas});
             // 
+            // tarimasentradasBindingSource
+            // 
+            this.tarimasentradasBindingSource.DataSource = typeof(ClientesExternos.Entity.tarimas_entradas);
+            // 
             // gvTarimas
             // 
+            this.gvTarimas.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colarticulos,
+            this.colnum_cajas,
+            this.colpeso,
+            this.colfecha_ingreso,
+            this.colnumero_tarima_cliente});
             this.gvTarimas.GridControl = this.gridTarimas;
             this.gvTarimas.Name = "gvTarimas";
+            this.gvTarimas.OptionsBehavior.Editable = false;
+            this.gvTarimas.OptionsView.ShowGroupPanel = false;
             // 
-            // dateTimePicker1
+            // colarticulos
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker1.CustomFormat = "dd/MMM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(603, 133);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(139, 26);
-            this.dateTimePicker1.TabIndex = 32;
+            this.colarticulos.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colarticulos.AppearanceCell.Options.UseFont = true;
+            this.colarticulos.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colarticulos.AppearanceHeader.Options.UseFont = true;
+            this.colarticulos.Caption = "Artículo";
+            this.colarticulos.FieldName = "articulos.nombre";
+            this.colarticulos.Name = "colarticulos";
+            this.colarticulos.Visible = true;
+            this.colarticulos.VisibleIndex = 1;
             // 
-            // button1
+            // colnum_cajas
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(748, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 30);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.colnum_cajas.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colnum_cajas.AppearanceCell.Options.UseFont = true;
+            this.colnum_cajas.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colnum_cajas.AppearanceHeader.Options.UseFont = true;
+            this.colnum_cajas.AppearanceHeader.Options.UseTextOptions = true;
+            this.colnum_cajas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colnum_cajas.Caption = "Cajas";
+            this.colnum_cajas.DisplayFormat.FormatString = "{0:0}";
+            this.colnum_cajas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colnum_cajas.FieldName = "num_cajas";
+            this.colnum_cajas.Name = "colnum_cajas";
+            this.colnum_cajas.Visible = true;
+            this.colnum_cajas.VisibleIndex = 2;
             // 
-            // button2
+            // colpeso
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(748, 201);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 30);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.colpeso.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colpeso.AppearanceCell.Options.UseFont = true;
+            this.colpeso.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colpeso.AppearanceHeader.Options.UseFont = true;
+            this.colpeso.AppearanceHeader.Options.UseTextOptions = true;
+            this.colpeso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colpeso.Caption = "Peso";
+            this.colpeso.DisplayFormat.FormatString = "n";
+            this.colpeso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colpeso.FieldName = "peso";
+            this.colpeso.Name = "colpeso";
+            this.colpeso.Visible = true;
+            this.colpeso.VisibleIndex = 3;
             // 
-            // button3
+            // colfecha_ingreso
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(390, 467);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 30);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Imprimir";
-            this.button3.UseVisualStyleBackColor = true;
+            this.colfecha_ingreso.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colfecha_ingreso.AppearanceCell.Options.UseFont = true;
+            this.colfecha_ingreso.AppearanceCell.Options.UseTextOptions = true;
+            this.colfecha_ingreso.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colfecha_ingreso.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colfecha_ingreso.AppearanceHeader.Options.UseFont = true;
+            this.colfecha_ingreso.AppearanceHeader.Options.UseTextOptions = true;
+            this.colfecha_ingreso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colfecha_ingreso.Caption = "Fecha Ingreso";
+            this.colfecha_ingreso.DisplayFormat.FormatString = "dd/MMM/yyyy";
+            this.colfecha_ingreso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colfecha_ingreso.FieldName = "fecha_ingreso";
+            this.colfecha_ingreso.Name = "colfecha_ingreso";
+            this.colfecha_ingreso.Visible = true;
+            this.colfecha_ingreso.VisibleIndex = 0;
+            // 
+            // colnumero_tarima_cliente
+            // 
+            this.colnumero_tarima_cliente.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colnumero_tarima_cliente.AppearanceCell.Options.UseFont = true;
+            this.colnumero_tarima_cliente.AppearanceCell.Options.UseTextOptions = true;
+            this.colnumero_tarima_cliente.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colnumero_tarima_cliente.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colnumero_tarima_cliente.AppearanceHeader.Options.UseFont = true;
+            this.colnumero_tarima_cliente.AppearanceHeader.Options.UseTextOptions = true;
+            this.colnumero_tarima_cliente.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colnumero_tarima_cliente.Caption = "Tarima Cliente";
+            this.colnumero_tarima_cliente.FieldName = "numero_tarima_cliente";
+            this.colnumero_tarima_cliente.Name = "colnumero_tarima_cliente";
+            this.colnumero_tarima_cliente.Visible = true;
+            this.colnumero_tarima_cliente.VisibleIndex = 4;
+            // 
+            // dtpFechaRecepcion
+            // 
+            this.dtpFechaRecepcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpFechaRecepcion.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpFechaRecepcion.CustomFormat = "dd/MMM/yyyy";
+            this.dtpFechaRecepcion.Enabled = false;
+            this.dtpFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaRecepcion.Location = new System.Drawing.Point(758, 471);
+            this.dtpFechaRecepcion.Name = "dtpFechaRecepcion";
+            this.dtpFechaRecepcion.Size = new System.Drawing.Size(139, 26);
+            this.dtpFechaRecepcion.TabIndex = 32;
+            this.dtpFechaRecepcion.Visible = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Image = global::ClientesExternos.Properties.Resources.add_26;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(748, 201);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(100, 35);
+            this.btnAgregar.TabIndex = 33;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Image = global::ClientesExternos.Properties.Resources.eliminar_26;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(748, 242);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(100, 35);
+            this.btnEliminar.TabIndex = 34;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnImprimir.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Image = global::ClientesExternos.Properties.Resources.printericon_26;
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.Location = new System.Drawing.Point(400, 462);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(100, 35);
+            this.btnImprimir.TabIndex = 35;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(96, 165);
+            this.label7.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(95, 207);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 18);
             this.label7.TabIndex = 36;
             this.label7.Text = "Tarimas:";
             // 
-            // FrmEntradas
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(266, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(194, 18);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Numero de tarima del cliente:";
+            // 
+            // txbNumTarimaCliente
+            // 
+            this.txbNumTarimaCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txbNumTarimaCliente.Location = new System.Drawing.Point(466, 165);
+            this.txbNumTarimaCliente.MaxLength = 50;
+            this.txbNumTarimaCliente.Name = "txbNumTarimaCliente";
+            this.txbNumTarimaCliente.Size = new System.Drawing.Size(276, 26);
+            this.txbNumTarimaCliente.TabIndex = 37;
+            // 
+            // txbFecha
+            // 
+            this.txbFecha.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txbFecha.BackColor = System.Drawing.Color.White;
+            this.txbFecha.Location = new System.Drawing.Point(603, 133);
+            this.txbFecha.Name = "txbFecha";
+            this.txbFecha.ReadOnly = true;
+            this.txbFecha.Size = new System.Drawing.Size(139, 26);
+            this.txbFecha.TabIndex = 39;
+            this.txbFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Frm_Entradas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.txbFecha);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txbNumTarimaCliente);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dtpFechaRecepcion);
             this.Controls.Add(this.gridTarimas);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txbPeso);
+            this.Controls.Add(this.txbNumCajas);
+            this.Controls.Add(this.cmbArticulos);
+            this.Controls.Add(this.cmbClientes);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "FrmEntradas";
+            this.Name = "Frm_Entradas";
             this.Size = new System.Drawing.Size(900, 500);
+            this.Load += new System.EventHandler(this.Frm_Entradas_Load);
+            this.VisibleChanged += new System.EventHandler(this.Frm_Entradas_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.gridTarimas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tarimasentradasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTarimas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -278,19 +445,28 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox cmbClientes;
+        private System.Windows.Forms.ComboBox cmbArticulos;
+        private System.Windows.Forms.TextBox txbNumCajas;
+        private System.Windows.Forms.TextBox txbPeso;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraGrid.GridControl gridTarimas;
         private DevExpress.XtraGrid.Views.Grid.GridView gvTarimas;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DateTimePicker dtpFechaRecepcion;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource tarimasentradasBindingSource;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txbNumTarimaCliente;
+        private DevExpress.XtraGrid.Columns.GridColumn colarticulos;
+        private DevExpress.XtraGrid.Columns.GridColumn colnum_cajas;
+        private DevExpress.XtraGrid.Columns.GridColumn colpeso;
+        private DevExpress.XtraGrid.Columns.GridColumn colfecha_ingreso;
+        private DevExpress.XtraGrid.Columns.GridColumn colnumero_tarima_cliente;
+        private System.Windows.Forms.TextBox txbFecha;
     }
 }

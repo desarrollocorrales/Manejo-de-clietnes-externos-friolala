@@ -12,6 +12,7 @@
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,23 +33,14 @@
     <EntitySetMapping Name="tarimas_entradas">
       <EntityTypeMapping TypeName="ClientextModel.tarimas_entradas">
         <MappingFragment StoreEntitySet="tarimas_entradas">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="numero_tarima_cliente" ColumnName="numero_tarima_cliente" />
           <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
           <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
           <ScalarProperty Name="peso" ColumnName="peso" />
           <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
-          <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-          <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tarimas_salidas">
-      <EntityTypeMapping TypeName="ClientextModel.tarimas_salidas">
-        <MappingFragment StoreEntitySet="tarimas_salidas">
-          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
-          <ScalarProperty Name="peso" ColumnName="peso" />
-          <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
-          <ScalarProperty Name="codigo_articulo" ColumnName="codigo_articulo" />
           <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -62,6 +54,20 @@
           <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
           <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
           <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarimas_salidas">
+      <EntityTypeMapping TypeName="ClientextModel.tarimas_salidas">
+        <MappingFragment StoreEntitySet="tarimas_salidas">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+          <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_tarima" ColumnName="id_tarima" />
+          <ScalarProperty Name="id_maniobra" ColumnName="id_maniobra" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

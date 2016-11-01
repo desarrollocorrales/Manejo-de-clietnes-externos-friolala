@@ -30,7 +30,14 @@ namespace ClientesExternos.GUIs.UserControls
                 ex = ex.InnerException;
             }
 
-            MessageBox.Show(sb.ToString(), exType, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (sb.ToString().Contains("UNIQUE"))
+            {
+                MessageBox.Show("El código ya ha sido utilizado para otro artículo, por favor ingrese un código diferente...", exType, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(sb.ToString(), exType, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

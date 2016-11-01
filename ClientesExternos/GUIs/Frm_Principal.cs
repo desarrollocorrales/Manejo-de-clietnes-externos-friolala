@@ -18,6 +18,7 @@ namespace ClientesExternos.GUIs
         private Frm_Clientes frClientes;
         private Frm_Usuarios frmUsuarios;
         private Frm_Entradas frmEntradas;
+        private Frm_Salidas frmSalidas;
 
         public Frm_Principal()
         {
@@ -44,6 +45,8 @@ namespace ClientesExternos.GUIs
                 itmEntradas.Visible = true;
                 itmSalidas.Visible = true;
             }
+
+            this.Text += string.Format(" - [{0}]", DatosDeApp.usuario_en_turno.nombre_completo);
         }
 
         private void InicializarControles()
@@ -63,6 +66,10 @@ namespace ClientesExternos.GUIs
             frmEntradas = new Frm_Entradas();
             this.Controls.Add(frmEntradas);
             frmEntradas.Hide();
+
+            frmSalidas = new Frm_Salidas();
+            this.Controls.Add(frmSalidas);
+            frmSalidas.Hide();
         }
 
         private void itmArticulos_LinkPressed(object sender, NavBarLinkEventArgs e)
@@ -92,8 +99,12 @@ namespace ClientesExternos.GUIs
             frmEntradas.Dock = DockStyle.Fill;
             frmEntradas.BringToFront();
         }
-        
 
-        
+        private void itmSalidas_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            frmSalidas.Show();
+            frmSalidas.Dock = DockStyle.Fill;
+            frmSalidas.BringToFront();
+        }
     }
 }

@@ -17,6 +17,22 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region Metadatos de relaciones en EDM
+
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_articulo", "articulos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.articulos), "tarimas_entradas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_entradas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario1", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.usuarios), "articulos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.articulos), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario2", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ClientesExternos.Entity.usuarios), "articulos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.articulos), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_cliente", "clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.clientes), "tarimas_entradas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_entradas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario1c", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.usuarios), "clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.clientes), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario2c", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ClientesExternos.Entity.usuarios), "clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.clientes), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.usuarios), "tarimas_entradas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_entradas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_articulo_s", "articulos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.articulos), "tarimas_salidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_salidas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_cliente_s", "clientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.clientes), "tarimas_salidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_salidas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_tarima_s", "tarimas_entradas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.tarimas_entradas), "tarimas_salidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_salidas), true)]
+[assembly: EdmRelationshipAttribute("ClientextModel", "fk_usuario_s", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ClientesExternos.Entity.usuarios), "tarimas_salidas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ClientesExternos.Entity.tarimas_salidas), true)]
+
+#endregion
+
 namespace ClientesExternos.Entity
 {
     #region Contextos
@@ -116,22 +132,6 @@ namespace ClientesExternos.Entity
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<tarimas_salidas> tarimas_salidas
-        {
-            get
-            {
-                if ((_tarimas_salidas == null))
-                {
-                    _tarimas_salidas = base.CreateObjectSet<tarimas_salidas>("tarimas_salidas");
-                }
-                return _tarimas_salidas;
-            }
-        }
-        private ObjectSet<tarimas_salidas> _tarimas_salidas;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<usuarios> usuarios
         {
             get
@@ -144,6 +144,22 @@ namespace ClientesExternos.Entity
             }
         }
         private ObjectSet<usuarios> _usuarios;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<tarimas_salidas> tarimas_salidas
+        {
+            get
+            {
+                if ((_tarimas_salidas == null))
+                {
+                    _tarimas_salidas = base.CreateObjectSet<tarimas_salidas>("tarimas_salidas");
+                }
+                return _tarimas_salidas;
+            }
+        }
+        private ObjectSet<tarimas_salidas> _tarimas_salidas;
 
         #endregion
 
@@ -174,19 +190,19 @@ namespace ClientesExternos.Entity
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet tarimas_salidas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddTotarimas_salidas(tarimas_salidas tarimas_salidas)
-        {
-            base.AddObject("tarimas_salidas", tarimas_salidas);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet usuarios. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddTousuarios(usuarios usuarios)
         {
             base.AddObject("usuarios", usuarios);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet tarimas_salidas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTotarimas_salidas(tarimas_salidas tarimas_salidas)
+        {
+            base.AddObject("tarimas_salidas", tarimas_salidas);
         }
 
         #endregion
@@ -210,15 +226,17 @@ namespace ClientesExternos.Entity
         /// <summary>
         /// Crear un nuevo objeto articulos.
         /// </summary>
+        /// <param name="id_articulo">Valor inicial de la propiedad id_articulo.</param>
         /// <param name="codigo">Valor inicial de la propiedad codigo.</param>
         /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
         /// <param name="id_cliente">Valor inicial de la propiedad id_cliente.</param>
         /// <param name="id_usuario_creador">Valor inicial de la propiedad id_usuario_creador.</param>
         /// <param name="fecha_creacion">Valor inicial de la propiedad fecha_creacion.</param>
         /// <param name="estatus">Valor inicial de la propiedad estatus.</param>
-        public static articulos Createarticulos(global::System.String codigo, global::System.String nombre, global::System.Int64 id_cliente, global::System.Int64 id_usuario_creador, global::System.DateTime fecha_creacion, global::System.String estatus)
+        public static articulos Createarticulos(global::System.Int64 id_articulo, global::System.String codigo, global::System.String nombre, global::System.Int64 id_cliente, global::System.Int64 id_usuario_creador, global::System.DateTime fecha_creacion, global::System.String estatus)
         {
             articulos articulos = new articulos();
+            articulos.id_articulo = id_articulo;
             articulos.codigo = codigo;
             articulos.nombre = nombre;
             articulos.id_cliente = id_cliente;
@@ -237,6 +255,33 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int64 id_articulo
+        {
+            get
+            {
+                return _id_articulo;
+            }
+            set
+            {
+                if (_id_articulo != value)
+                {
+                    Onid_articuloChanging(value);
+                    ReportPropertyChanging("id_articulo");
+                    _id_articulo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_articulo");
+                    Onid_articuloChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id_articulo;
+        partial void Onid_articuloChanging(global::System.Int64 value);
+        partial void Onid_articuloChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.String codigo
         {
             get
@@ -245,14 +290,11 @@ namespace ClientesExternos.Entity
             }
             set
             {
-                if (_codigo != value)
-                {
-                    OncodigoChanging(value);
-                    ReportPropertyChanging("codigo");
-                    _codigo = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("codigo");
-                    OncodigoChanged();
-                }
+                OncodigoChanging(value);
+                ReportPropertyChanging("codigo");
+                _codigo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("codigo");
+                OncodigoChanged();
             }
         }
         private global::System.String _codigo;
@@ -262,7 +304,7 @@ namespace ClientesExternos.Entity
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String nombre
         {
@@ -272,14 +314,11 @@ namespace ClientesExternos.Entity
             }
             set
             {
-                if (_nombre != value)
-                {
-                    OnnombreChanging(value);
-                    ReportPropertyChanging("nombre");
-                    _nombre = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("nombre");
-                    OnnombreChanged();
-                }
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
             }
         }
         private global::System.String _nombre;
@@ -289,7 +328,7 @@ namespace ClientesExternos.Entity
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 id_cliente
         {
@@ -299,14 +338,11 @@ namespace ClientesExternos.Entity
             }
             set
             {
-                if (_id_cliente != value)
-                {
-                    Onid_clienteChanging(value);
-                    ReportPropertyChanging("id_cliente");
-                    _id_cliente = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id_cliente");
-                    Onid_clienteChanged();
-                }
+                Onid_clienteChanging(value);
+                ReportPropertyChanging("id_cliente");
+                _id_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_cliente");
+                Onid_clienteChanged();
             }
         }
         private global::System.Int64 _id_cliente;
@@ -436,6 +472,130 @@ namespace ClientesExternos.Entity
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_articulo", "tarimas_entradas")]
+        public EntityCollection<tarimas_entradas> tarimas_entradas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_entradas>("ClientextModel.fk_articulo", "tarimas_entradas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_entradas>("ClientextModel.fk_articulo", "tarimas_entradas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario1", "usuarios")]
+        public usuarios usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuariosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario1", "usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario2", "usuarios")]
+        public usuarios usuarios1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuarios1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario2", "usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_articulo_s", "tarimas_salidas")]
+        public EntityCollection<tarimas_salidas> tarimas_salidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_salidas>("ClientextModel.fk_articulo_s", "tarimas_salidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_salidas>("ClientextModel.fk_articulo_s", "tarimas_salidas", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -457,7 +617,7 @@ namespace ClientesExternos.Entity
         /// <param name="id_usuario_creador">Valor inicial de la propiedad id_usuario_creador.</param>
         /// <param name="fecha_creacion">Valor inicial de la propiedad fecha_creacion.</param>
         /// <param name="estatus">Valor inicial de la propiedad estatus.</param>
-        public static clientes Createclientes(global::System.Int64 id_cliente, global::System.String nombre, global::System.String serie, global::System.Int32 id_usuario_creador, global::System.DateTime fecha_creacion, global::System.String estatus)
+        public static clientes Createclientes(global::System.Int64 id_cliente, global::System.String nombre, global::System.String serie, global::System.Int64 id_usuario_creador, global::System.DateTime fecha_creacion, global::System.String estatus)
         {
             clientes clientes = new clientes();
             clientes.id_cliente = id_cliente;
@@ -553,7 +713,7 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 id_usuario_creador
+        public global::System.Int64 id_usuario_creador
         {
             get
             {
@@ -568,8 +728,8 @@ namespace ClientesExternos.Entity
                 Onid_usuario_creadorChanged();
             }
         }
-        private global::System.Int32 _id_usuario_creador;
-        partial void Onid_usuario_creadorChanging(global::System.Int32 value);
+        private global::System.Int64 _id_usuario_creador;
+        partial void Onid_usuario_creadorChanging(global::System.Int64 value);
         partial void Onid_usuario_creadorChanged();
     
         /// <summary>
@@ -625,7 +785,7 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_usuario_ultima_modificacion
+        public Nullable<global::System.Int64> id_usuario_ultima_modificacion
         {
             get
             {
@@ -640,8 +800,8 @@ namespace ClientesExternos.Entity
                 Onid_usuario_ultima_modificacionChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_usuario_ultima_modificacion;
-        partial void Onid_usuario_ultima_modificacionChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _id_usuario_ultima_modificacion;
+        partial void Onid_usuario_ultima_modificacionChanging(Nullable<global::System.Int64> value);
         partial void Onid_usuario_ultima_modificacionChanged();
     
         /// <summary>
@@ -671,6 +831,130 @@ namespace ClientesExternos.Entity
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_cliente", "tarimas_entradas")]
+        public EntityCollection<tarimas_entradas> tarimas_entradas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_entradas>("ClientextModel.fk_cliente", "tarimas_entradas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_entradas>("ClientextModel.fk_cliente", "tarimas_entradas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario1c", "usuarios")]
+        public usuarios usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1c", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1c", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuariosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario1c", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario1c", "usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario2c", "usuarios")]
+        public usuarios usuarios1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2c", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2c", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuarios1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario2c", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario2c", "usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_cliente_s", "tarimas_salidas")]
+        public EntityCollection<tarimas_salidas> tarimas_salidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_salidas>("ClientextModel.fk_cliente_s", "tarimas_salidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_salidas>("ClientextModel.fk_cliente_s", "tarimas_salidas", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -688,19 +972,21 @@ namespace ClientesExternos.Entity
         /// </summary>
         /// <param name="id_tarima">Valor inicial de la propiedad id_tarima.</param>
         /// <param name="id_cliente">Valor inicial de la propiedad id_cliente.</param>
-        /// <param name="codigo_articulo">Valor inicial de la propiedad codigo_articulo.</param>
+        /// <param name="id_articulo">Valor inicial de la propiedad id_articulo.</param>
         /// <param name="num_cajas">Valor inicial de la propiedad num_cajas.</param>
         /// <param name="peso">Valor inicial de la propiedad peso.</param>
         /// <param name="fecha_ingreso">Valor inicial de la propiedad fecha_ingreso.</param>
-        public static tarimas_entradas Createtarimas_entradas(global::System.Int64 id_tarima, global::System.Int64 id_cliente, global::System.String codigo_articulo, global::System.Int32 num_cajas, global::System.Decimal peso, global::System.DateTime fecha_ingreso)
+        /// <param name="id_usuario">Valor inicial de la propiedad id_usuario.</param>
+        public static tarimas_entradas Createtarimas_entradas(global::System.Int64 id_tarima, global::System.Int64 id_cliente, global::System.Int64 id_articulo, global::System.Int32 num_cajas, global::System.Decimal peso, global::System.DateTime fecha_ingreso, global::System.Int64 id_usuario)
         {
             tarimas_entradas tarimas_entradas = new tarimas_entradas();
             tarimas_entradas.id_tarima = id_tarima;
             tarimas_entradas.id_cliente = id_cliente;
-            tarimas_entradas.codigo_articulo = codigo_articulo;
+            tarimas_entradas.id_articulo = id_articulo;
             tarimas_entradas.num_cajas = num_cajas;
             tarimas_entradas.peso = peso;
             tarimas_entradas.fecha_ingreso = fecha_ingreso;
+            tarimas_entradas.id_usuario = id_usuario;
             return tarimas_entradas;
         }
 
@@ -764,24 +1050,24 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String codigo_articulo
+        public global::System.Int64 id_articulo
         {
             get
             {
-                return _codigo_articulo;
+                return _id_articulo;
             }
             set
             {
-                Oncodigo_articuloChanging(value);
-                ReportPropertyChanging("codigo_articulo");
-                _codigo_articulo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("codigo_articulo");
-                Oncodigo_articuloChanged();
+                Onid_articuloChanging(value);
+                ReportPropertyChanging("id_articulo");
+                _id_articulo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_articulo");
+                Onid_articuloChanged();
             }
         }
-        private global::System.String _codigo_articulo;
-        partial void Oncodigo_articuloChanging(global::System.String value);
-        partial void Oncodigo_articuloChanged();
+        private global::System.Int64 _id_articulo;
+        partial void Onid_articuloChanging(global::System.Int64 value);
+        partial void Onid_articuloChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -878,10 +1164,198 @@ namespace ClientesExternos.Entity
         private global::System.String _numero_etiqueta;
         partial void Onnumero_etiquetaChanging(global::System.String value);
         partial void Onnumero_etiquetaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String numero_tarima_cliente
+        {
+            get
+            {
+                return _numero_tarima_cliente;
+            }
+            set
+            {
+                Onnumero_tarima_clienteChanging(value);
+                ReportPropertyChanging("numero_tarima_cliente");
+                _numero_tarima_cliente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("numero_tarima_cliente");
+                Onnumero_tarima_clienteChanged();
+            }
+        }
+        private global::System.String _numero_tarima_cliente;
+        partial void Onnumero_tarima_clienteChanging(global::System.String value);
+        partial void Onnumero_tarima_clienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id_usuario
+        {
+            get
+            {
+                return _id_usuario;
+            }
+            set
+            {
+                Onid_usuarioChanging(value);
+                ReportPropertyChanging("id_usuario");
+                _id_usuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_usuario");
+                Onid_usuarioChanged();
+            }
+        }
+        private global::System.Int64 _id_usuario;
+        partial void Onid_usuarioChanging(global::System.Int64 value);
+        partial void Onid_usuarioChanged();
 
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_articulo", "articulos")]
+        public articulos articulos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo", "articulos").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo", "articulos").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<articulos> articulosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo", "articulos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<articulos>("ClientextModel.fk_articulo", "articulos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_cliente", "clientes")]
+        public clientes clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente", "clientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente", "clientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<clientes> clientesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente", "clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<clientes>("ClientextModel.fk_cliente", "clientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario", "usuarios")]
+        public usuarios usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuariosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario", "usuarios", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_tarima_s", "tarimas_salidas")]
+        public EntityCollection<tarimas_salidas> tarimas_salidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_salidas>("ClientextModel.fk_tarima_s", "tarimas_salidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_salidas>("ClientextModel.fk_tarima_s", "tarimas_salidas", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -897,19 +1371,25 @@ namespace ClientesExternos.Entity
         /// <summary>
         /// Crear un nuevo objeto tarimas_salidas.
         /// </summary>
+        /// <param name="id_maniobra">Valor inicial de la propiedad id_maniobra.</param>
         /// <param name="id_tarima">Valor inicial de la propiedad id_tarima.</param>
-        /// <param name="codigo_articulo">Valor inicial de la propiedad codigo_articulo.</param>
+        /// <param name="id_cliente">Valor inicial de la propiedad id_cliente.</param>
+        /// <param name="id_articulo">Valor inicial de la propiedad id_articulo.</param>
         /// <param name="num_cajas">Valor inicial de la propiedad num_cajas.</param>
         /// <param name="peso">Valor inicial de la propiedad peso.</param>
         /// <param name="fecha_salida">Valor inicial de la propiedad fecha_salida.</param>
-        public static tarimas_salidas Createtarimas_salidas(global::System.Int64 id_tarima, global::System.String codigo_articulo, global::System.Int32 num_cajas, global::System.Decimal peso, global::System.DateTime fecha_salida)
+        /// <param name="id_usuario">Valor inicial de la propiedad id_usuario.</param>
+        public static tarimas_salidas Createtarimas_salidas(global::System.Int64 id_maniobra, global::System.Int64 id_tarima, global::System.Int64 id_cliente, global::System.Int64 id_articulo, global::System.Int32 num_cajas, global::System.Decimal peso, global::System.DateTime fecha_salida, global::System.Int64 id_usuario)
         {
             tarimas_salidas tarimas_salidas = new tarimas_salidas();
+            tarimas_salidas.id_maniobra = id_maniobra;
             tarimas_salidas.id_tarima = id_tarima;
-            tarimas_salidas.codigo_articulo = codigo_articulo;
+            tarimas_salidas.id_cliente = id_cliente;
+            tarimas_salidas.id_articulo = id_articulo;
             tarimas_salidas.num_cajas = num_cajas;
             tarimas_salidas.peso = peso;
             tarimas_salidas.fecha_salida = fecha_salida;
+            tarimas_salidas.id_usuario = id_usuario;
             return tarimas_salidas;
         }
 
@@ -922,6 +1402,33 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int64 id_maniobra
+        {
+            get
+            {
+                return _id_maniobra;
+            }
+            set
+            {
+                if (_id_maniobra != value)
+                {
+                    Onid_maniobraChanging(value);
+                    ReportPropertyChanging("id_maniobra");
+                    _id_maniobra = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_maniobra");
+                    Onid_maniobraChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id_maniobra;
+        partial void Onid_maniobraChanging(global::System.Int64 value);
+        partial void Onid_maniobraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int64 id_tarima
         {
             get
@@ -930,14 +1437,11 @@ namespace ClientesExternos.Entity
             }
             set
             {
-                if (_id_tarima != value)
-                {
-                    Onid_tarimaChanging(value);
-                    ReportPropertyChanging("id_tarima");
-                    _id_tarima = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id_tarima");
-                    Onid_tarimaChanged();
-                }
+                Onid_tarimaChanging(value);
+                ReportPropertyChanging("id_tarima");
+                _id_tarima = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_tarima");
+                Onid_tarimaChanged();
             }
         }
         private global::System.Int64 _id_tarima;
@@ -949,24 +1453,48 @@ namespace ClientesExternos.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String codigo_articulo
+        public global::System.Int64 id_cliente
         {
             get
             {
-                return _codigo_articulo;
+                return _id_cliente;
             }
             set
             {
-                Oncodigo_articuloChanging(value);
-                ReportPropertyChanging("codigo_articulo");
-                _codigo_articulo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("codigo_articulo");
-                Oncodigo_articuloChanged();
+                Onid_clienteChanging(value);
+                ReportPropertyChanging("id_cliente");
+                _id_cliente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_cliente");
+                Onid_clienteChanged();
             }
         }
-        private global::System.String _codigo_articulo;
-        partial void Oncodigo_articuloChanging(global::System.String value);
-        partial void Oncodigo_articuloChanged();
+        private global::System.Int64 _id_cliente;
+        partial void Onid_clienteChanging(global::System.Int64 value);
+        partial void Onid_clienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id_articulo
+        {
+            get
+            {
+                return _id_articulo;
+            }
+            set
+            {
+                Onid_articuloChanging(value);
+                ReportPropertyChanging("id_articulo");
+                _id_articulo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_articulo");
+                Onid_articuloChanged();
+            }
+        }
+        private global::System.Int64 _id_articulo;
+        partial void Onid_articuloChanging(global::System.Int64 value);
+        partial void Onid_articuloChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1039,10 +1567,190 @@ namespace ClientesExternos.Entity
         private global::System.DateTime _fecha_salida;
         partial void Onfecha_salidaChanging(global::System.DateTime value);
         partial void Onfecha_salidaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id_usuario
+        {
+            get
+            {
+                return _id_usuario;
+            }
+            set
+            {
+                Onid_usuarioChanging(value);
+                ReportPropertyChanging("id_usuario");
+                _id_usuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_usuario");
+                Onid_usuarioChanged();
+            }
+        }
+        private global::System.Int64 _id_usuario;
+        partial void Onid_usuarioChanging(global::System.Int64 value);
+        partial void Onid_usuarioChanged();
 
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_articulo_s", "articulos")]
+        public articulos articulos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo_s", "articulos").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo_s", "articulos").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<articulos> articulosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<articulos>("ClientextModel.fk_articulo_s", "articulos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<articulos>("ClientextModel.fk_articulo_s", "articulos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_cliente_s", "clientes")]
+        public clientes clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente_s", "clientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente_s", "clientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<clientes> clientesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clientes>("ClientextModel.fk_cliente_s", "clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<clientes>("ClientextModel.fk_cliente_s", "clientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_tarima_s", "tarimas_entradas")]
+        public tarimas_entradas tarimas_entradas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarimas_entradas>("ClientextModel.fk_tarima_s", "tarimas_entradas").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarimas_entradas>("ClientextModel.fk_tarima_s", "tarimas_entradas").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tarimas_entradas> tarimas_entradasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tarimas_entradas>("ClientextModel.fk_tarima_s", "tarimas_entradas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tarimas_entradas>("ClientextModel.fk_tarima_s", "tarimas_entradas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario_s", "usuarios")]
+        public usuarios usuarios
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario_s", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario_s", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuarios> usuariosReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuarios>("ClientextModel.fk_usuario_s", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuarios>("ClientextModel.fk_usuario_s", "usuarios", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1230,6 +1938,142 @@ namespace ClientesExternos.Entity
         #endregion
 
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario1", "articulos")]
+        public EntityCollection<articulos> articulos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<articulos>("ClientextModel.fk_usuario1", "articulos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<articulos>("ClientextModel.fk_usuario1", "articulos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario2", "articulos")]
+        public EntityCollection<articulos> articulos1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<articulos>("ClientextModel.fk_usuario2", "articulos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<articulos>("ClientextModel.fk_usuario2", "articulos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario1c", "clientes")]
+        public EntityCollection<clientes> clientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<clientes>("ClientextModel.fk_usuario1c", "clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<clientes>("ClientextModel.fk_usuario1c", "clientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario2c", "clientes")]
+        public EntityCollection<clientes> clientes1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<clientes>("ClientextModel.fk_usuario2c", "clientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<clientes>("ClientextModel.fk_usuario2c", "clientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario", "tarimas_entradas")]
+        public EntityCollection<tarimas_entradas> tarimas_entradas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_entradas>("ClientextModel.fk_usuario", "tarimas_entradas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_entradas>("ClientextModel.fk_usuario", "tarimas_entradas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ClientextModel", "fk_usuario_s", "tarimas_salidas")]
+        public EntityCollection<tarimas_salidas> tarimas_salidas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<tarimas_salidas>("ClientextModel.fk_usuario_s", "tarimas_salidas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<tarimas_salidas>("ClientextModel.fk_usuario_s", "tarimas_salidas", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion
