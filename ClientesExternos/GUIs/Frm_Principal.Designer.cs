@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal));
             this.NavBar = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.itmInventarioCliente = new DevExpress.XtraNavBar.NavBarItem();
+            this.itmEntregasDia = new DevExpress.XtraNavBar.NavBarItem();
+            this.itmRecepcionesDia = new DevExpress.XtraNavBar.NavBarItem();
+            this.itmManiobrasDia = new DevExpress.XtraNavBar.NavBarItem();
             this.nbMenu = new DevExpress.XtraNavBar.NavBarGroup();
             this.itmArticulos = new DevExpress.XtraNavBar.NavBarItem();
             this.itmClientes = new DevExpress.XtraNavBar.NavBarItem();
@@ -41,16 +46,21 @@
             // 
             // NavBar
             // 
-            this.NavBar.ActiveGroup = this.nbMenu;
+            this.NavBar.ActiveGroup = this.navBarGroup1;
             this.NavBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.NavBar.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.nbMenu});
+            this.nbMenu,
+            this.navBarGroup1});
             this.NavBar.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.itmArticulos,
             this.itmClientes,
             this.itmEntradas,
             this.itmSalidas,
-            this.itmUsuarios});
+            this.itmUsuarios,
+            this.itmInventarioCliente,
+            this.itmRecepcionesDia,
+            this.itmEntregasDia,
+            this.itmManiobrasDia});
             this.NavBar.Location = new System.Drawing.Point(0, 0);
             this.NavBar.Name = "NavBar";
             this.NavBar.OptionsNavPane.ExpandedWidth = 215;
@@ -58,10 +68,50 @@
             this.NavBar.TabIndex = 4;
             this.NavBar.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Caramel");
             // 
+            // navBarGroup1
+            // 
+            this.navBarGroup1.Caption = "Reportes";
+            this.navBarGroup1.Expanded = true;
+            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itmInventarioCliente),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itmEntregasDia),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itmRecepcionesDia),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.itmManiobrasDia)});
+            this.navBarGroup1.Name = "navBarGroup1";
+            // 
+            // itmInventarioCliente
+            // 
+            this.itmInventarioCliente.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.itmInventarioCliente.Appearance.Options.UseFont = true;
+            this.itmInventarioCliente.Caption = "Inventario por cliente";
+            this.itmInventarioCliente.Name = "itmInventarioCliente";
+            this.itmInventarioCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmInventarioCliente_LinkClicked);
+            // 
+            // itmEntregasDia
+            // 
+            this.itmEntregasDia.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.itmEntregasDia.Appearance.Options.UseFont = true;
+            this.itmEntregasDia.Caption = "Entregas por día";
+            this.itmEntregasDia.Name = "itmEntregasDia";
+            this.itmEntregasDia.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmEntregasDia_LinkClicked);
+            // 
+            // itmRecepcionesDia
+            // 
+            this.itmRecepcionesDia.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.itmRecepcionesDia.Appearance.Options.UseFont = true;
+            this.itmRecepcionesDia.Caption = "Recepciones por día";
+            this.itmRecepcionesDia.Name = "itmRecepcionesDia";
+            // 
+            // itmManiobrasDia
+            // 
+            this.itmManiobrasDia.Appearance.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.itmManiobrasDia.Appearance.Options.UseFont = true;
+            this.itmManiobrasDia.Caption = "Maniobras por día";
+            this.itmManiobrasDia.Name = "itmManiobrasDia";
+            // 
             // nbMenu
             // 
             this.nbMenu.Caption = "Menú";
-            this.nbMenu.Expanded = true;
             this.nbMenu.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itmArticulos),
             new DevExpress.XtraNavBar.NavBarItemLink(this.itmClientes),
@@ -147,6 +197,11 @@
         private DevExpress.XtraNavBar.NavBarItem itmEntradas;
         private DevExpress.XtraNavBar.NavBarItem itmSalidas;
         private DevExpress.XtraNavBar.NavBarItem itmUsuarios;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
+        private DevExpress.XtraNavBar.NavBarItem itmInventarioCliente;
+        private DevExpress.XtraNavBar.NavBarItem itmManiobrasDia;
+        private DevExpress.XtraNavBar.NavBarItem itmRecepcionesDia;
+        private DevExpress.XtraNavBar.NavBarItem itmEntregasDia;
 
     }
 }

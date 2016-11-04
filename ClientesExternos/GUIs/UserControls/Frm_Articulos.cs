@@ -235,7 +235,7 @@ namespace ClientesExternos.GUIs.UserControls
             {
                 try
                 {
-                    var Contexto = new ClientextEntities();
+                    var Contexto = new ClientextEntities(entityString);
                     var ArticuloModificar= Contexto.articulos.FirstOrDefault(o => (o.codigo == articulo.codigo) && (o.id_cliente == articulo.id_cliente));
                     if (ArticuloModificar != null)
                     {
@@ -323,7 +323,7 @@ namespace ClientesExternos.GUIs.UserControls
             try
             {
                 var articulo = (articulos)cmbCodigos.SelectedItem;
-                var Contexto = new ClientextEntities();
+                var Contexto = new ClientextEntities(entityString);
                 var ArticuloEliminar = Contexto.articulos.FirstOrDefault(o => (o.codigo == articulo.codigo) && (o.id_cliente == articulo.id_cliente));
                 if (ArticuloEliminar != null)
                 {
@@ -342,7 +342,7 @@ namespace ClientesExternos.GUIs.UserControls
 
         private DateTime getFechaServer()
         {
-            var Contexto = new ClientextEntities();
+            var Contexto = new ClientextEntities(entityString);
             var dateQuery = Contexto.CreateQuery<DateTime>("CurrentDateTime()");
             DateTime serverDate = dateQuery.AsEnumerable().First();
             return serverDate;

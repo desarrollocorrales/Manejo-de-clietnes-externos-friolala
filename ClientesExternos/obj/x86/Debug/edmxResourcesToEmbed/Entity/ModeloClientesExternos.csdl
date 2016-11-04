@@ -50,6 +50,7 @@
       <End Role="usuarios" EntitySet="usuarios" />
       <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
     </AssociationSet>
+    <EntitySet Name="vw_inventario" EntityType="ClientextModel.vw_inventario" />
   </EntityContainer>
   <EntityType Name="articulos">
     <Key>
@@ -270,4 +271,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="vw_inventario">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="articulo" />
+      <PropertyRef Name="num_cajas" />
+      <PropertyRef Name="peso" />
+      <PropertyRef Name="tipo" />
+    </Key>
+    <Property Type="String" Name="numero_etiqueta" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="id_cliente" Nullable="false" />
+    <Property Type="String" Name="codigo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="articulo" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="num_cajas" Nullable="false" />
+    <Property Type="Decimal" Name="peso" Nullable="false" />
+    <Property Type="String" Name="tipo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

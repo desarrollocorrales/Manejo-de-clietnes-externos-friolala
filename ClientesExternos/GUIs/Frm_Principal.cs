@@ -19,6 +19,8 @@ namespace ClientesExternos.GUIs
         private Frm_Usuarios frmUsuarios;
         private Frm_Entradas frmEntradas;
         private Frm_Salidas frmSalidas;
+        private Frm_Reporte_Inventario_Cliente frmInventarioPorCliente;
+        private Frm_EntradasPorDia frmEntradasPorDia;
 
         public Frm_Principal()
         {
@@ -70,6 +72,14 @@ namespace ClientesExternos.GUIs
             frmSalidas = new Frm_Salidas();
             this.Controls.Add(frmSalidas);
             frmSalidas.Hide();
+
+            frmInventarioPorCliente = new Frm_Reporte_Inventario_Cliente();
+            this.Controls.Add(frmInventarioPorCliente);
+            frmInventarioPorCliente.Hide();
+
+            frmEntradasPorDia = new Frm_EntradasPorDia();
+            this.Controls.Add(frmEntradasPorDia);
+            frmEntradasPorDia.Hide();
         }
 
         private void itmArticulos_LinkPressed(object sender, NavBarLinkEventArgs e)
@@ -106,5 +116,20 @@ namespace ClientesExternos.GUIs
             frmSalidas.Dock = DockStyle.Fill;
             frmSalidas.BringToFront();
         }
+
+        private void itmInventarioCliente_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            frmInventarioPorCliente.Show();
+            frmInventarioPorCliente.Dock = DockStyle.Fill;
+            frmInventarioPorCliente.BringToFront();
+        }
+
+        private void itmEntregasDia_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            frmEntradasPorDia.Show();
+            frmEntradasPorDia.Dock = DockStyle.Fill;
+            frmEntradasPorDia.BringToFront();
+        }
+
     }
 }

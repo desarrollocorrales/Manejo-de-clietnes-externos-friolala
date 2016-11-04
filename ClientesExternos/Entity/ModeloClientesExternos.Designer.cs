@@ -160,6 +160,22 @@ namespace ClientesExternos.Entity
             }
         }
         private ObjectSet<tarimas_salidas> _tarimas_salidas;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<vw_inventario> vw_inventario
+        {
+            get
+            {
+                if ((_vw_inventario == null))
+                {
+                    _vw_inventario = base.CreateObjectSet<vw_inventario>("vw_inventario");
+                }
+                return _vw_inventario;
+            }
+        }
+        private ObjectSet<vw_inventario> _vw_inventario;
 
         #endregion
 
@@ -203,6 +219,14 @@ namespace ClientesExternos.Entity
         public void AddTotarimas_salidas(tarimas_salidas tarimas_salidas)
         {
             base.AddObject("tarimas_salidas", tarimas_salidas);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet vw_inventario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddTovw_inventario(vw_inventario vw_inventario)
+        {
+            base.AddObject("vw_inventario", vw_inventario);
         }
 
         #endregion
@@ -2074,6 +2098,232 @@ namespace ClientesExternos.Entity
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ClientextModel", Name="vw_inventario")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class vw_inventario : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto vw_inventario.
+        /// </summary>
+        /// <param name="id_cliente">Valor inicial de la propiedad id_cliente.</param>
+        /// <param name="codigo">Valor inicial de la propiedad codigo.</param>
+        /// <param name="articulo">Valor inicial de la propiedad articulo.</param>
+        /// <param name="num_cajas">Valor inicial de la propiedad num_cajas.</param>
+        /// <param name="peso">Valor inicial de la propiedad peso.</param>
+        /// <param name="tipo">Valor inicial de la propiedad tipo.</param>
+        public static vw_inventario Createvw_inventario(global::System.Int64 id_cliente, global::System.String codigo, global::System.String articulo, global::System.Int64 num_cajas, global::System.Decimal peso, global::System.String tipo)
+        {
+            vw_inventario vw_inventario = new vw_inventario();
+            vw_inventario.id_cliente = id_cliente;
+            vw_inventario.codigo = codigo;
+            vw_inventario.articulo = articulo;
+            vw_inventario.num_cajas = num_cajas;
+            vw_inventario.peso = peso;
+            vw_inventario.tipo = tipo;
+            return vw_inventario;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String numero_etiqueta
+        {
+            get
+            {
+                return _numero_etiqueta;
+            }
+            set
+            {
+                Onnumero_etiquetaChanging(value);
+                ReportPropertyChanging("numero_etiqueta");
+                _numero_etiqueta = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("numero_etiqueta");
+                Onnumero_etiquetaChanged();
+            }
+        }
+        private global::System.String _numero_etiqueta;
+        partial void Onnumero_etiquetaChanging(global::System.String value);
+        partial void Onnumero_etiquetaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id_cliente
+        {
+            get
+            {
+                return _id_cliente;
+            }
+            set
+            {
+                if (_id_cliente != value)
+                {
+                    Onid_clienteChanging(value);
+                    ReportPropertyChanging("id_cliente");
+                    _id_cliente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_cliente");
+                    Onid_clienteChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id_cliente;
+        partial void Onid_clienteChanging(global::System.Int64 value);
+        partial void Onid_clienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String codigo
+        {
+            get
+            {
+                return _codigo;
+            }
+            set
+            {
+                if (_codigo != value)
+                {
+                    OncodigoChanging(value);
+                    ReportPropertyChanging("codigo");
+                    _codigo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("codigo");
+                    OncodigoChanged();
+                }
+            }
+        }
+        private global::System.String _codigo;
+        partial void OncodigoChanging(global::System.String value);
+        partial void OncodigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String articulo
+        {
+            get
+            {
+                return _articulo;
+            }
+            set
+            {
+                if (_articulo != value)
+                {
+                    OnarticuloChanging(value);
+                    ReportPropertyChanging("articulo");
+                    _articulo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("articulo");
+                    OnarticuloChanged();
+                }
+            }
+        }
+        private global::System.String _articulo;
+        partial void OnarticuloChanging(global::System.String value);
+        partial void OnarticuloChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 num_cajas
+        {
+            get
+            {
+                return _num_cajas;
+            }
+            set
+            {
+                if (_num_cajas != value)
+                {
+                    Onnum_cajasChanging(value);
+                    ReportPropertyChanging("num_cajas");
+                    _num_cajas = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("num_cajas");
+                    Onnum_cajasChanged();
+                }
+            }
+        }
+        private global::System.Int64 _num_cajas;
+        partial void Onnum_cajasChanging(global::System.Int64 value);
+        partial void Onnum_cajasChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal peso
+        {
+            get
+            {
+                return _peso;
+            }
+            set
+            {
+                if (_peso != value)
+                {
+                    OnpesoChanging(value);
+                    ReportPropertyChanging("peso");
+                    _peso = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("peso");
+                    OnpesoChanged();
+                }
+            }
+        }
+        private global::System.Decimal _peso;
+        partial void OnpesoChanging(global::System.Decimal value);
+        partial void OnpesoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String tipo
+        {
+            get
+            {
+                return _tipo;
+            }
+            set
+            {
+                if (_tipo != value)
+                {
+                    OntipoChanging(value);
+                    ReportPropertyChanging("tipo");
+                    _tipo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("tipo");
+                    OntipoChanged();
+                }
+            }
+        }
+        private global::System.String _tipo;
+        partial void OntipoChanging(global::System.String value);
+        partial void OntipoChanged();
+
+        #endregion
+
+    
     }
 
     #endregion

@@ -41,7 +41,7 @@ namespace ClientesExternos.GUIs.UserControls
         }
         private DateTime getFechaServer()
         {
-            var Contexto = new ClientextEntities();
+            var Contexto = new ClientextEntities(entityString);
             var dateQuery = Contexto.CreateQuery<DateTime>("CurrentDateTime()");
             DateTime serverDate = dateQuery.AsEnumerable().First();
             return serverDate;
@@ -68,7 +68,7 @@ namespace ClientesExternos.GUIs.UserControls
                 var lstNumerosEtiquetas = AbrirArchivo(sRutaEscaneo);
                 
                 SalidasGrid TarimaSalida;
-                var Contexto = new ClientextEntities();
+                var Contexto = new ClientextEntities(entityString);
                 var lstManiobrasSalida = new List<tarimas_salidas>();
                 var lstTarimas = new List<SalidasGrid>();
 
@@ -139,7 +139,7 @@ namespace ClientesExternos.GUIs.UserControls
             if (ValidarSalida() == true)
             {
                 var lstTarimas = (List<SalidasGrid>)gridSalidas.DataSource;
-                var Contexto = new ClientextEntities();
+                var Contexto = new ClientextEntities(entityString);
                 tarimas_salidas Maniobra;
                 foreach (SalidasGrid tarima in lstTarimas)
                 {
@@ -164,7 +164,6 @@ namespace ClientesExternos.GUIs.UserControls
 
                 Contexto.Dispose();
 
-                MessageBox.Show("¡La salida se realizó con éxito!", "Salida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarControles();
 
                 rptSalida xrSalida = new rptSalida();

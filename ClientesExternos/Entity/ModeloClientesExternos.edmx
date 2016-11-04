@@ -11,6 +11,17 @@
           <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
           <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
           <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
+          <EntitySet Name="vw_inventario" EntityType="ClientextModel.Store.vw_inventario" store:Type="Views" store:Schema="friolala_clientext" store:Name="vw_inventario">
+            <DefiningQuery>SELECT
+      `vw_inventario`.`numero_etiqueta`, 
+      `vw_inventario`.`id_cliente`, 
+      `vw_inventario`.`codigo`, 
+      `vw_inventario`.`articulo`, 
+      `vw_inventario`.`num_cajas`, 
+      `vw_inventario`.`peso`, 
+      `vw_inventario`.`tipo`
+      FROM `vw_inventario` AS `vw_inventario`</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="fk_articulo" Association="ClientextModel.Store.fk_articulo">
             <End Role="articulos" EntitySet="articulos" />
             <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
@@ -120,6 +131,26 @@
           <Property Name="contrasenia" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="permisos" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'def.friolala_clientext.vw_inventario' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="vw_inventario">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="articulo" />
+            <PropertyRef Name="num_cajas" />
+            <PropertyRef Name="peso" />
+            <PropertyRef Name="tipo" />
+          </Key>
+          <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+          <Property Name="id_cliente" Type="uint" Nullable="false" />
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="articulo" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="num_cajas" Type="bigint" Nullable="false" />
+          <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="1" />
         </EntityType>
         <Association Name="fk_articulo">
           <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="1" />
@@ -307,6 +338,7 @@
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
           </AssociationSet>
+          <EntitySet Name="vw_inventario" EntityType="ClientextModel.vw_inventario" />
         </EntityContainer>
         <EntityType Name="articulos">
           <Key>
@@ -527,6 +559,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vw_inventario">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="articulo" />
+            <PropertyRef Name="num_cajas" />
+            <PropertyRef Name="peso" />
+            <PropertyRef Name="tipo" />
+          </Key>
+          <Property Type="String" Name="numero_etiqueta" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="id_cliente" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="articulo" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="num_cajas" Nullable="false" />
+          <Property Type="Decimal" Name="peso" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -603,6 +652,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_inventario">
+            <EntityTypeMapping TypeName="ClientextModel.vw_inventario">
+              <MappingFragment StoreEntitySet="vw_inventario">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
+                <ScalarProperty Name="articulo" ColumnName="articulo" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -645,19 +707,20 @@
           <ConnectorPoint PointX="4.5" PointY="0.55698866076072107" />
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_cliente" >
-          <ConnectorPoint PointX="4.5" PointY="6.8265126193656283" />
-          <ConnectorPoint PointX="6.375" PointY="6.8265126193656283" />
-          <ConnectorPoint PointX="6.375" PointY="4.3936979166666656" />
+          <ConnectorPoint PointX="4.5" PointY="5.59375" />
+          <ConnectorPoint PointX="7.03125" PointY="5.59375" />
+          <ConnectorPoint PointX="7.03125" PointY="4.3936979166666656" />
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_usuario1c" >
-          <ConnectorPoint PointX="10.5" PointY="6.1702045518703139" />
-          <ConnectorPoint PointX="6.458333333333333" PointY="6.170204551870313" />
-          <ConnectorPoint PointX="6.291666666666667" PointY="6.1702045518703139" />
-          <ConnectorPoint PointX="4.5" PointY="6.1702045518703139" />
+          <ConnectorPoint PointX="10.5" PointY="7.053820742187499" />
+          <ConnectorPoint PointX="4.5" PointY="7.053820742187499" />
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_usuario2c" >
-          <ConnectorPoint PointX="10.5" PointY="7.7014545518703139" />
-          <ConnectorPoint PointX="4.5" PointY="7.7014545518703139" />
+          <ConnectorPoint PointX="10.5" PointY="8.451396484375" />
+          <ConnectorPoint PointX="10.125" PointY="8.826396484375" />
+          <ConnectorPoint PointX="4.875" PointY="8.826396484375" />
+          <ConnectorPoint PointX="4.875" PointY="8.951396484375" />
+          <ConnectorPoint PointX="4.5" PointY="8.576396484375" />
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_usuario" >
           <ConnectorPoint PointX="11.6562525" PointY="5.125" />
@@ -678,8 +741,8 @@
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_cliente_s" >
           <ConnectorPoint PointX="4.5" PointY="5.4131982421875" />
-          <ConnectorPoint PointX="6.291666666666667" PointY="5.4131982421874989" />
-          <ConnectorPoint PointX="6.458333333333333" PointY="5.4131982421875" />
+          <ConnectorPoint PointX="6.947916666666667" PointY="5.4131982421874989" />
+          <ConnectorPoint PointX="7.114583333333333" PointY="5.4131982421875" />
           <ConnectorPoint PointX="8.125" PointY="5.4131982421875" />
         </AssociationConnector>
         <AssociationConnector Association="ClientextModel.fk_tarima_s" >
@@ -690,6 +753,7 @@
           <ConnectorPoint PointX="10.5" PointY="5.3506982421875" />
           <ConnectorPoint PointX="9.625" PointY="5.3506982421875" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="ClientextModel.vw_inventario" Width="1.5" PointX="0.625" PointY="6.625" Height="2.3648893229166665" />
         </Diagram>
     </Diagrams>
   </Designer>

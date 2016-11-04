@@ -6,6 +6,17 @@
     <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="vw_inventario" EntityType="ClientextModel.Store.vw_inventario" store:Type="Views" store:Schema="friolala_clientext" store:Name="vw_inventario">
+      <DefiningQuery>SELECT
+      `vw_inventario`.`numero_etiqueta`, 
+      `vw_inventario`.`id_cliente`, 
+      `vw_inventario`.`codigo`, 
+      `vw_inventario`.`articulo`, 
+      `vw_inventario`.`num_cajas`, 
+      `vw_inventario`.`peso`, 
+      `vw_inventario`.`tipo`
+      FROM `vw_inventario` AS `vw_inventario`</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="fk_articulo" Association="ClientextModel.Store.fk_articulo">
       <End Role="articulos" EntitySet="articulos" />
       <End Role="tarimas_entradas" EntitySet="tarimas_entradas" />
@@ -115,6 +126,26 @@
     <Property Name="contrasenia" Type="varchar" Nullable="false" MaxLength="15" />
     <Property Name="permisos" Type="varchar" Nullable="false" MaxLength="255" />
     <Property Name="estatus" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'def.friolala_clientext.vw_inventario' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="vw_inventario">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+      <PropertyRef Name="codigo" />
+      <PropertyRef Name="articulo" />
+      <PropertyRef Name="num_cajas" />
+      <PropertyRef Name="peso" />
+      <PropertyRef Name="tipo" />
+    </Key>
+    <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+    <Property Name="id_cliente" Type="uint" Nullable="false" />
+    <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="articulo" Type="varchar" Nullable="false" MaxLength="80" />
+    <Property Name="num_cajas" Type="bigint" Nullable="false" />
+    <Property Name="peso" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="1" />
   </EntityType>
   <Association Name="fk_articulo">
     <End Role="articulos" Type="ClientextModel.Store.articulos" Multiplicity="1" />

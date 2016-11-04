@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\MyDAL.cs" />
     <Compile Include="Entity\ModeloClientesExternos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +113,18 @@
     <Compile Include="GUIs\UserControls\Frm_Clientes.Designer.cs">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIs\UserControls\Frm_EntradasPorDia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_EntradasPorDia.Designer.cs">
+      <DependentUpon>Frm_EntradasPorDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Reporte_Inventario_Cliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_Reporte_Inventario_Cliente.Designer.cs">
+      <DependentUpon>Frm_Reporte_Inventario_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIs\UserControls\Frm_Salidas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +138,8 @@
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\DatosDeApp.cs" />
+    <Compile Include="Modelos\EntradasPorDia.cs" />
+    <Compile Include="Modelos\InventarioCliente.cs" />
     <Compile Include="Modelos\SalidasGrid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +153,18 @@
     </Compile>
     <Compile Include="Reportes\rptEntrada.Designer.cs">
       <DependentUpon>rptEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptEntregasPorDia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptEntregasPorDia.Designer.cs">
+      <DependentUpon>rptEntregasPorDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptInventarioClientes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptInventarioClientes.Designer.cs">
+      <DependentUpon>rptInventarioClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\rptSalida.cs">
       <SubType>Component</SubType>
@@ -163,6 +190,12 @@
     <EmbeddedResource Include="GUIs\UserControls\Frm_Clientes.resx">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_EntradasPorDia.resx">
+      <DependentUpon>Frm_EntradasPorDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_Reporte_Inventario_Cliente.resx">
+      <DependentUpon>Frm_Reporte_Inventario_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUIs\UserControls\Frm_Salidas.resx">
       <DependentUpon>Frm_Salidas.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +211,12 @@
     <EmbeddedResource Include="Reportes\rptEntrada.resx">
       <DependentUpon>rptEntrada.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptEntregasPorDia.resx">
+      <DependentUpon>rptEntregasPorDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\rptInventarioClientes.resx">
+      <DependentUpon>rptInventarioClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptSalida.resx">
       <DependentUpon>rptSalida.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,8 +225,11 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloClientesExternos.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Properties\DataSources\ClientesExternos.Entity.ClientextEntities.datasource" />
     <None Include="Properties\DataSources\ClientesExternos.Entity.tarimas_entradas.datasource" />
     <None Include="Properties\DataSources\ClientesExternos.Entity.tarimas_salidas.datasource" />
+    <None Include="Properties\DataSources\ClientesExternos.Modelos.EntradasPorDia.datasource" />
+    <None Include="Properties\DataSources\ClientesExternos.Modelos.InventarioCliente.datasource" />
     <None Include="Properties\DataSources\ClientesExternos.Modelos.SalidasGrid.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -199,9 +241,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\add_26.png" />
   </ItemGroup>
@@ -249,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
+    <None Include="Resources\search_26.png" />
     <None Include="Resources\salida_26.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -123,7 +123,7 @@ namespace ClientesExternos.GUIs.UserControls
 
         private DateTime getFechaServer()
         {
-            var Contexto = new ClientextEntities();
+            var Contexto = new ClientextEntities(entityString);
             var dateQuery = Contexto.CreateQuery<DateTime>("CurrentDateTime()");
             DateTime serverDate = dateQuery.AsEnumerable().First();
             return serverDate;
