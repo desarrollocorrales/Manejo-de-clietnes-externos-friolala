@@ -131,6 +131,12 @@
     <Compile Include="GUIs\UserControls\Frm_Salidas.Designer.cs">
       <DependentUpon>Frm_Salidas.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIs\UserControls\Frm_SalidasPorDia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUIs\UserControls\Frm_SalidasPorDia.Designer.cs">
+      <DependentUpon>Frm_SalidasPorDia.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIs\UserControls\Frm_Usuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,7 +144,8 @@
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\DatosDeApp.cs" />
-    <Compile Include="Modelos\EntradasPorDia.cs" />
+    <Compile Include="Modelos\Enumeradores.cs" />
+    <Compile Include="Modelos\MovimientosPorDia.cs" />
     <Compile Include="Modelos\InventarioCliente.cs" />
     <Compile Include="Modelos\SalidasGrid.cs" />
     <Compile Include="Program.cs" />
@@ -154,11 +161,11 @@
     <Compile Include="Reportes\rptEntrada.Designer.cs">
       <DependentUpon>rptEntrada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\rptEntregasPorDia.cs">
+    <Compile Include="Reportes\rptMovimientosPorDia.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\rptEntregasPorDia.Designer.cs">
-      <DependentUpon>rptEntregasPorDia.cs</DependentUpon>
+    <Compile Include="Reportes\rptMovimientosPorDia.Designer.cs">
+      <DependentUpon>rptMovimientosPorDia.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\rptInventarioClientes.cs">
       <SubType>Component</SubType>
@@ -199,6 +206,9 @@
     <EmbeddedResource Include="GUIs\UserControls\Frm_Salidas.resx">
       <DependentUpon>Frm_Salidas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUIs\UserControls\Frm_SalidasPorDia.resx">
+      <DependentUpon>Frm_SalidasPorDia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUIs\UserControls\Frm_Usuarios.resx">
       <DependentUpon>Frm_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,8 +221,8 @@
     <EmbeddedResource Include="Reportes\rptEntrada.resx">
       <DependentUpon>rptEntrada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\rptEntregasPorDia.resx">
-      <DependentUpon>rptEntregasPorDia.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\rptMovimientosPorDia.resx">
+      <DependentUpon>rptMovimientosPorDia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptInventarioClientes.resx">
       <DependentUpon>rptInventarioClientes.cs</DependentUpon>

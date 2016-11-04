@@ -45,9 +45,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridEntradasDia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.entradasPorDiaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEntradasDia)).BeginInit();
@@ -58,11 +60,11 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(323, 76);
+            this.label3.Location = new System.Drawing.Point(110, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 18);
+            this.label3.Size = new System.Drawing.Size(88, 18);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Fecha:";
+            this.label3.Text = "Fecha Inicial:";
             // 
             // gridEntradasDia
             // 
@@ -80,7 +82,7 @@
             // 
             // entradasPorDiaBindingSource
             // 
-            this.entradasPorDiaBindingSource.DataSource = typeof(ClientesExternos.Modelos.EntradasPorDia);
+            this.entradasPorDiaBindingSource.DataSource = typeof(ClientesExternos.Modelos.MovimientosPorDia);
             // 
             // gvEntradasDia
             // 
@@ -324,6 +326,7 @@
             this.btnCerrar.TabIndex = 17;
             this.btnCerrar.Text = "X";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label1
             // 
@@ -377,15 +380,15 @@
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // dtpFecha
+            // dtpFechaInicial
             // 
-            this.dtpFecha.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtpFecha.CustomFormat = "dd/MMMM/2016";
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFecha.Location = new System.Drawing.Point(377, 70);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 26);
-            this.dtpFecha.TabIndex = 23;
+            this.dtpFechaInicial.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpFechaInicial.CustomFormat = "dd/MMMM/2016";
+            this.dtpFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaInicial.Location = new System.Drawing.Point(204, 70);
+            this.dtpFechaInicial.Name = "dtpFechaInicial";
+            this.dtpFechaInicial.Size = new System.Drawing.Size(200, 26);
+            this.dtpFechaInicial.TabIndex = 23;
             // 
             // label4
             // 
@@ -408,13 +411,36 @@
             this.cmbClientes.Size = new System.Drawing.Size(618, 26);
             this.cmbClientes.TabIndex = 25;
             // 
+            // dtpFechaFinal
+            // 
+            this.dtpFechaFinal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpFechaFinal.CustomFormat = "dd/MMMM/2016";
+            this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(591, 70);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(200, 26);
+            this.dtpFechaFinal.TabIndex = 27;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(504, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 18);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Fecha Final:";
+            // 
             // Frm_EntradasPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.dtpFechaFinal);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbClientes);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.dtpFechaInicial);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.label3);
@@ -444,7 +470,7 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.BindingSource entradasPorDiaBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colCliente;
         private DevExpress.XtraGrid.Columns.GridColumn colTarimaCliente;
@@ -455,5 +481,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCodigo_Articulo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbClientes;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinal;
+        private System.Windows.Forms.Label label5;
     }
 }

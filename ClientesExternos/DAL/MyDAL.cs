@@ -77,17 +77,18 @@ namespace ClientesExternos.DAL
             return lstInventarioCliente;
         }
 
-        public List<EntradasPorDia> getEntradasPorDia(DateTime fecha, long id_cliente)
+        public List<MovimientosPorDia> getEntradasPorDia(DateTime fechaInicial, DateTime fechaFinal, long id_cliente)
         {
-            var fecha_ini = fecha.ToString("yyyy-MM-dd");
-            var fecha_fin = fecha.AddDays(1).ToString("yyyy-MM-dd");
-            List<EntradasPorDia> lstEntregasPorDia = new List<EntradasPorDia>();
+            var fecha_ini = fechaInicial.ToString("yyyy-MM-dd");
+            var fecha_fin = fechaFinal.AddDays(1).ToString("yyyy-MM-dd");
+            List<MovimientosPorDia> lstEntregasPorDia = new List<MovimientosPorDia>();
 
             MyConexion.Open();
 
             MyComando.Connection = MyConexion;
             MyComando.CommandText = string.Format(
                 @"SELECT 
+                        te.fecha_ingreso,
 	                    c.nombre AS cliente,
                         te.numero_tarima_cliente AS tarima_cliente,
                         te.numero_etiqueta,
@@ -110,10 +111,10 @@ namespace ClientesExternos.DAL
             MyAdapter.SelectCommand = MyComando;
             MyAdapter.Fill(dt);
 
-            EntradasPorDia _entregaPorDia;
+            MovimientosPorDia _entregaPorDia;
             foreach (DataRow Row in dt.Rows)
             {
-                _entregaPorDia = new EntradasPorDia();
+                _entregaPorDia = new MovimientosPorDia();
                 _entregaPorDia.Cliente = Convert.ToString(Row["cliente"]);
                 _entregaPorDia.TarimaCliente = Convert.ToString(Row["tarima_cliente"]) + " ";
                 _entregaPorDia.NumeroEtiqueta = Convert.ToString(Row["numero_etiqueta"]);
@@ -121,6 +122,63 @@ namespace ClientesExternos.DAL
                 _entregaPorDia.Articulo = Convert.ToString(Row["articulo"]);
                 _entregaPorDia.Cajas = Convert.ToInt64(Row["cajas"]);
                 _entregaPorDia.Peso = Convert.ToDecimal(Row["peso"]);
+                _entregaPorDia.Fecha = Convert.ToDateTime(Row["fecha_ingreso"]);
+
+                lstEntregasPorDia.Add(_entregaPorDia);
+            }
+
+            MyConexion.Close();
+
+            return lstEntregasPorDia;
+        }
+
+        public List<MovimientosPorDia> getSalidasPorDia(DateTime fechaInicial, DateTime fechaFinal, long id_cliente)
+        {
+            var fecha_ini = fechaInicial.ToString("yyyy-MM-dd");
+            var fecha_fin = fechaFinal.AddDays(1).ToString("yyyy-MM-dd");
+            List<MovimientosPorDia> lstEntregasPorDia = new List<MovimientosPorDia>();
+
+            MyConexion.Open();
+
+            MyComando.Connection = MyConexion;
+            MyComando.CommandText = string.Format(
+                @"SELECT 
+                        ts.fecha_salida,
+                        c.nombre AS cliente,
+                        te.numero_tarima_cliente AS tarima_cliente,
+                        te.numero_etiqueta,
+                        a.codigo,
+                        a.nombre AS articulo,
+                        ts.num_cajas AS cajas,
+                        ts.peso
+                    FROM
+                        tarimas_salidas ts
+                            INNER JOIN tarimas_entradas te ON ts.id_tarima = te.id_tarima
+                            INNER JOIN articulos a ON ts.id_articulo = a.id_articulo
+                            INNER JOIN clientes c ON ts.id_cliente = c.id_cliente
+                    WHERE
+	                    ts.fecha_salida > '{0}' AND ts.fecha_salida < '{1}' ", fecha_ini, fecha_fin);
+            if (id_cliente != 0)
+            {
+                MyComando.CommandText += string.Format(" AND ts.id_cliente = {0}", id_cliente);
+            }
+
+            DataTable dt = new DataTable();
+            MyAdapter.SelectCommand = MyComando;
+            MyAdapter.Fill(dt);
+
+            MovimientosPorDia _entregaPorDia;
+            foreach (DataRow Row in dt.Rows)
+            {
+                _entregaPorDia = new MovimientosPorDia();
+                _entregaPorDia.Cliente = Convert.ToString(Row["cliente"]);
+                _entregaPorDia.TarimaCliente = Convert.ToString(Row["tarima_cliente"]) + " ";
+                _entregaPorDia.NumeroEtiqueta = Convert.ToString(Row["numero_etiqueta"]);
+                _entregaPorDia.Codigo = Convert.ToString(Row["codigo"]);
+                _entregaPorDia.Articulo = Convert.ToString(Row["articulo"]);
+                _entregaPorDia.Cajas = Convert.ToInt64(Row["cajas"]);
+                _entregaPorDia.Peso = Convert.ToDecimal(Row["peso"]);
+                _entregaPorDia.Fecha = Convert.ToDateTime(Row["fecha_salida"]);
 
                 lstEntregasPorDia.Add(_entregaPorDia);
             }

@@ -6,18 +6,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ClientesExternos.DAL;
 using ClientesExternos.Entity;
 using ClientesExternos.Modelos;
-using ClientesExternos.DAL;
 using ClientesExternos.Reportes;
 
 namespace ClientesExternos.GUIs.UserControls
 {
-    public partial class Frm_EntradasPorDia : UserControl
+    public partial class Frm_SalidasPorDia : UserControl
     {
-        string entityString = Properties.Settings.Default.EntityString;
+        private string entityString = Properties.Settings.Default.EntityString;
 
-        public Frm_EntradasPorDia()
+        public Frm_SalidasPorDia()
         {
             InitializeComponent();
         }
@@ -35,7 +35,7 @@ namespace ClientesExternos.GUIs.UserControls
                 var lstClientes = new List<clientes>();
                 lstClientes.Add(todosLosClientes);
                 lstClientes.AddRange(lstClientesAUX.FindAll(o => o.estatus == "A").OrderBy(o => o.nombre).ToList());
-                
+
                 cmbClientes.DataSource = null;
                 cmbClientes.DataSource = lstClientes;
                 cmbClientes.DisplayMember = "nombre";
@@ -66,35 +66,44 @@ namespace ClientesExternos.GUIs.UserControls
             MessageBox.Show(sb.ToString(), exType, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Frm_SalidasPorDia_Load(object sender, EventArgs e)
+        {
+            CargarClientes();
+        }
+
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             try
             {
-                ConsultarEntradasPorDia();
+                Consultar();
             }
             catch (Exception ex)
             {
                 MostrarExcepcion(ex);
             }
         }
-
-        private void ConsultarEntradasPorDia()
+        private void Consultar()
         {
             MyDAL mySQL = new MyDAL();
             var fechaInicial = dtpFechaInicial.Value;
             var fechaFinal = dtpFechaFinal.Value;
             var cliente = (clientes)cmbClientes.SelectedItem;
-            var lstEntregasPorDia = mySQL.getEntradasPorDia(fechaInicial, fechaFinal, cliente.id_cliente);
-            gridEntradasDia.DataSource = lstEntregasPorDia;
-            gvEntradasDia.BestFitColumns();
+            var lstSalidasPorDia = mySQL.getSalidasPorDia(fechaInicial, fechaFinal, cliente.id_cliente);
+            gridSalidasDia.DataSource = lstSalidasPorDia;
+            gvSalidasDia.BestFitColumns();
 
-            if (lstEntregasPorDia.Count == 0)
+            if (lstSalidasPorDia.Count == 0)
             {
                 MessageBox.Show("No hay registros de entrada para la fecha seleccionada...", "Consultar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void gvEntradasDia_EndGrouping(object sender, EventArgs e)
+        private void gvSalidasDia_EndGrouping(object sender, EventArgs e)
         {
             (sender as DevExpress.XtraGrid.Views.Grid.GridView).ExpandAllGroups();
         }
@@ -112,21 +121,12 @@ namespace ClientesExternos.GUIs.UserControls
         }
         private void Imprimir()
         {
-            rptMovimientosPorDia rptEntradas = new rptMovimientosPorDia();
-            rptEntradas.fecha_inicial = dtpFechaInicial.Value;
-            rptEntradas.fecha_final = dtpFechaFinal.Value;
-            rptEntradas.DataSource = gridEntradasDia.DataSource;
-            rptEntradas.ShowPreviewDialog();
-        }
-
-        private void Frm_EntradasPorDia_Load(object sender, EventArgs e)
-        {
-            CargarClientes();
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+            rptMovimientosPorDia rptSalidas = new rptMovimientosPorDia();
+            rptSalidas.fecha_inicial = dtpFechaInicial.Value;
+            rptSalidas.fecha_final = dtpFechaFinal.Value;
+            rptSalidas.esEntrada = false;
+            rptSalidas.DataSource = gridSalidasDia.DataSource;
+            rptSalidas.ShowPreviewDialog();
         }
     }
 }

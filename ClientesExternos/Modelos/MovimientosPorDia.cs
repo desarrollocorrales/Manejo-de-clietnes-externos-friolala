@@ -1,7 +1,8 @@
-﻿
+﻿using System;
+
 namespace ClientesExternos.Modelos
 {
-    public class EntradasPorDia
+    public class MovimientosPorDia
     {
         private string _codigo, _articulo;
 
@@ -46,5 +47,6 @@ namespace ClientesExternos.Modelos
                 return "Kgs"; 
             } 
         }
+        public DateTime Fecha { set; get; }
     }
 }
