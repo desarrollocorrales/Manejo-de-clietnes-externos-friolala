@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txbRutaEscaneo = new System.Windows.Forms.TextBox();
             this.btnBuscarEscaneo = new System.Windows.Forms.Button();
             this.gridSalidas = new DevExpress.XtraGrid.GridControl();
-            this.salidasGridBindingSource = new System.Windows.Forms.BindingSource();
+            this.salidasGridBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvSalidas = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumeroTarima = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -125,10 +126,8 @@
             // 
             // gvSalidas
             // 
-            this.gvSalidas.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvSalidas.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gvSalidas.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvSalidas.Appearance.Row.Options.UseFont = true;
+            this.gvSalidas.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvSalidas.Appearance.FooterPanel.Options.UseFont = true;
             this.gvSalidas.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colCliente,
             this.colNumeroTarima,
@@ -141,6 +140,7 @@
             this.gvSalidas.GridControl = this.gridSalidas;
             this.gvSalidas.GroupCount = 1;
             this.gvSalidas.Name = "gvSalidas";
+            this.gvSalidas.OptionsView.ShowFooter = true;
             this.gvSalidas.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colCliente, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvSalidas.EndGrouping += new System.EventHandler(this.gvSalidas_EndGrouping);
@@ -149,19 +149,29 @@
             // 
             this.colCliente.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colCliente.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colCliente.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colCliente.AppearanceCell.Options.UseBackColor = true;
+            this.colCliente.AppearanceCell.Options.UseFont = true;
+            this.colCliente.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colCliente.AppearanceHeader.Options.UseFont = true;
             this.colCliente.FieldName = "Cliente";
             this.colCliente.Name = "colCliente";
             this.colCliente.OptionsColumn.AllowEdit = false;
+            this.colCliente.Visible = true;
+            this.colCliente.VisibleIndex = 0;
             // 
             // colNumeroTarima
             // 
             this.colNumeroTarima.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colNumeroTarima.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colNumeroTarima.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNumeroTarima.AppearanceCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.colNumeroTarima.AppearanceCell.Options.UseBackColor = true;
+            this.colNumeroTarima.AppearanceCell.Options.UseFont = true;
             this.colNumeroTarima.AppearanceCell.Options.UseTextOptions = true;
             this.colNumeroTarima.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNumeroTarima.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNumeroTarima.AppearanceHeader.Options.UseFont = true;
             this.colNumeroTarima.AppearanceHeader.Options.UseTextOptions = true;
             this.colNumeroTarima.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNumeroTarima.FieldName = "NumeroTarima";
@@ -174,10 +184,14 @@
             // 
             this.colNumeroTarimaCliente.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colNumeroTarimaCliente.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colNumeroTarimaCliente.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNumeroTarimaCliente.AppearanceCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.colNumeroTarimaCliente.AppearanceCell.Options.UseBackColor = true;
+            this.colNumeroTarimaCliente.AppearanceCell.Options.UseFont = true;
             this.colNumeroTarimaCliente.AppearanceCell.Options.UseTextOptions = true;
             this.colNumeroTarimaCliente.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNumeroTarimaCliente.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNumeroTarimaCliente.AppearanceHeader.Options.UseFont = true;
             this.colNumeroTarimaCliente.AppearanceHeader.Options.UseTextOptions = true;
             this.colNumeroTarimaCliente.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNumeroTarimaCliente.Caption = "#Tarima Cliente";
@@ -191,10 +205,14 @@
             // 
             this.colCodigo.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colCodigo.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colCodigo.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colCodigo.AppearanceCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.colCodigo.AppearanceCell.Options.UseBackColor = true;
+            this.colCodigo.AppearanceCell.Options.UseFont = true;
             this.colCodigo.AppearanceCell.Options.UseTextOptions = true;
             this.colCodigo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCodigo.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colCodigo.AppearanceHeader.Options.UseFont = true;
             this.colCodigo.AppearanceHeader.Options.UseTextOptions = true;
             this.colCodigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCodigo.FieldName = "Codigo";
@@ -207,11 +225,17 @@
             // 
             this.colArticulo.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colArticulo.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colArticulo.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colArticulo.AppearanceCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.colArticulo.AppearanceCell.Options.UseBackColor = true;
+            this.colArticulo.AppearanceCell.Options.UseFont = true;
+            this.colArticulo.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colArticulo.AppearanceHeader.Options.UseFont = true;
             this.colArticulo.FieldName = "Articulo";
             this.colArticulo.Name = "colArticulo";
             this.colArticulo.OptionsColumn.AllowEdit = false;
+            this.colArticulo.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
             this.colArticulo.Visible = true;
             this.colArticulo.VisibleIndex = 3;
             // 
@@ -219,13 +243,19 @@
             // 
             this.colCajas.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.colCajas.AppearanceCell.BackColor2 = System.Drawing.Color.LightGoldenrodYellow;
+            this.colCajas.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colCajas.AppearanceCell.Options.UseBackColor = true;
+            this.colCajas.AppearanceCell.Options.UseFont = true;
             this.colCajas.AppearanceCell.Options.UseTextOptions = true;
             this.colCajas.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colCajas.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colCajas.AppearanceHeader.Options.UseFont = true;
             this.colCajas.AppearanceHeader.Options.UseTextOptions = true;
             this.colCajas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colCajas.FieldName = "Cajas";
             this.colCajas.Name = "colCajas";
+            this.colCajas.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.colCajas.Visible = true;
             this.colCajas.VisibleIndex = 4;
             // 
@@ -233,13 +263,19 @@
             // 
             this.colPeso.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.colPeso.AppearanceCell.BackColor2 = System.Drawing.Color.LightGoldenrodYellow;
+            this.colPeso.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colPeso.AppearanceCell.Options.UseBackColor = true;
+            this.colPeso.AppearanceCell.Options.UseFont = true;
             this.colPeso.AppearanceCell.Options.UseTextOptions = true;
             this.colPeso.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colPeso.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPeso.AppearanceHeader.Options.UseFont = true;
             this.colPeso.AppearanceHeader.Options.UseTextOptions = true;
             this.colPeso.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colPeso.FieldName = "Peso";
             this.colPeso.Name = "colPeso";
+            this.colPeso.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Peso", "{0:#,0.00}")});
             this.colPeso.Visible = true;
             this.colPeso.VisibleIndex = 5;
             // 
@@ -247,8 +283,12 @@
             // 
             this.colUnidad.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.colUnidad.AppearanceCell.BackColor2 = System.Drawing.Color.Silver;
+            this.colUnidad.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colUnidad.AppearanceCell.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
             this.colUnidad.AppearanceCell.Options.UseBackColor = true;
+            this.colUnidad.AppearanceCell.Options.UseFont = true;
+            this.colUnidad.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colUnidad.AppearanceHeader.Options.UseFont = true;
             this.colUnidad.FieldName = "Unidad";
             this.colUnidad.Name = "colUnidad";
             this.colUnidad.OptionsColumn.AllowEdit = false;

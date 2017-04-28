@@ -74,6 +74,7 @@
     <EntitySetMapping Name="vw_inventario">
       <EntityTypeMapping TypeName="ClientextModel.vw_inventario">
         <MappingFragment StoreEntitySet="vw_inventario">
+          <ScalarProperty Name="tarima_cliente" ColumnName="tarima_cliente" />
           <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="peso" ColumnName="peso" />
           <ScalarProperty Name="num_cajas" ColumnName="num_cajas" />
@@ -81,6 +82,16 @@
           <ScalarProperty Name="codigo" ColumnName="codigo" />
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
           <ScalarProperty Name="numero_etiqueta" ColumnName="numero_etiqueta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plantillas_etiquetas">
+      <EntityTypeMapping TypeName="ClientextModel.plantillas_etiquetas">
+        <MappingFragment StoreEntitySet="plantillas_etiquetas">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="comando" ColumnName="comando" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_etiqueta" ColumnName="id_etiqueta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -228,7 +228,7 @@
             this.xrLabel25.SizeF = new System.Drawing.SizeF(40.00008F, 19.99999F);
             this.xrLabel25.StylePriority.UseFont = false;
             this.xrLabel25.StylePriority.UseTextAlignment = false;
-            this.xrLabel25.Text = "A";
+            this.xrLabel25.Text = "Al";
             this.xrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // lblFechaInicial
@@ -284,7 +284,7 @@
             this.lblFechaReporte.SizeF = new System.Drawing.SizeF(39.99992F, 19.99999F);
             this.lblFechaReporte.StylePriority.UseFont = false;
             this.lblFechaReporte.StylePriority.UseTextAlignment = false;
-            this.lblFechaReporte.Text = "De";
+            this.lblFechaReporte.Text = "Del";
             this.lblFechaReporte.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // lblFecha

@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.gridSalidasDia = new DevExpress.XtraGrid.GridControl();
+            this.movimientosPorDiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvSalidasDia = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarimaCliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumeroEtiqueta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCodigo_Articulo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,6 +52,7 @@
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridSalidasDia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movimientosPorDiaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSalidasDia)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +103,7 @@
             this.gridSalidasDia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridSalidasDia.DataSource = this.movimientosPorDiaBindingSource;
             this.gridSalidasDia.Location = new System.Drawing.Point(3, 175);
             this.gridSalidasDia.MainView = this.gvSalidasDia;
             this.gridSalidasDia.Name = "gridSalidasDia";
@@ -106,6 +111,10 @@
             this.gridSalidasDia.TabIndex = 29;
             this.gridSalidasDia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSalidasDia});
+            // 
+            // movimientosPorDiaBindingSource
+            // 
+            this.movimientosPorDiaBindingSource.DataSource = typeof(ClientesExternos.Modelos.MovimientosPorDia);
             // 
             // gvSalidasDia
             // 
@@ -169,9 +178,11 @@
             this.gvSalidasDia.Appearance.GroupButton.Options.UseForeColor = true;
             this.gvSalidasDia.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(247)))));
             this.gvSalidasDia.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(247)))));
+            this.gvSalidasDia.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvSalidasDia.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
             this.gvSalidasDia.Appearance.GroupFooter.Options.UseBackColor = true;
             this.gvSalidasDia.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.gvSalidasDia.Appearance.GroupFooter.Options.UseFont = true;
             this.gvSalidasDia.Appearance.GroupFooter.Options.UseForeColor = true;
             this.gvSalidasDia.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(109)))), ((int)(((byte)(185)))));
             this.gvSalidasDia.Appearance.GroupPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(236)))), ((int)(((byte)(254)))));
@@ -221,6 +232,7 @@
             this.gvSalidasDia.Appearance.VertLine.Options.UseBackColor = true;
             this.gvSalidasDia.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colCliente,
+            this.colFecha,
             this.colTarimaCliente,
             this.colNumeroEtiqueta,
             this.colCodigo_Articulo,
@@ -250,6 +262,21 @@
             this.colCliente.FieldName = "Cliente";
             this.colCliente.Name = "colCliente";
             // 
+            // colFecha
+            // 
+            this.colFecha.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.AppearanceCell.Options.UseFont = true;
+            this.colFecha.AppearanceCell.Options.UseTextOptions = true;
+            this.colFecha.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFecha.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.AppearanceHeader.Options.UseFont = true;
+            this.colFecha.AppearanceHeader.Options.UseTextOptions = true;
+            this.colFecha.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFecha.FieldName = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.Visible = true;
+            this.colFecha.VisibleIndex = 0;
+            // 
             // colTarimaCliente
             // 
             this.colTarimaCliente.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -263,7 +290,7 @@
             this.colTarimaCliente.FieldName = "TarimaCliente";
             this.colTarimaCliente.Name = "colTarimaCliente";
             this.colTarimaCliente.Visible = true;
-            this.colTarimaCliente.VisibleIndex = 0;
+            this.colTarimaCliente.VisibleIndex = 1;
             // 
             // colNumeroEtiqueta
             // 
@@ -279,7 +306,7 @@
             this.colNumeroEtiqueta.FieldName = "NumeroEtiqueta";
             this.colNumeroEtiqueta.Name = "colNumeroEtiqueta";
             this.colNumeroEtiqueta.Visible = true;
-            this.colNumeroEtiqueta.VisibleIndex = 1;
+            this.colNumeroEtiqueta.VisibleIndex = 2;
             // 
             // colCodigo_Articulo
             // 
@@ -290,8 +317,6 @@
             this.colCodigo_Articulo.Caption = "Artículo";
             this.colCodigo_Articulo.FieldName = "Codigo_Articulo";
             this.colCodigo_Articulo.Name = "colCodigo_Articulo";
-            this.colCodigo_Articulo.Visible = true;
-            this.colCodigo_Articulo.VisibleIndex = 5;
             // 
             // colCajas
             // 
@@ -306,7 +331,7 @@
             this.colCajas.FieldName = "Cajas";
             this.colCajas.Name = "colCajas";
             this.colCajas.Visible = true;
-            this.colCajas.VisibleIndex = 2;
+            this.colCajas.VisibleIndex = 3;
             // 
             // colPeso
             // 
@@ -323,7 +348,7 @@
             this.colPeso.FieldName = "Peso";
             this.colPeso.Name = "colPeso";
             this.colPeso.Visible = true;
-            this.colPeso.VisibleIndex = 3;
+            this.colPeso.VisibleIndex = 4;
             // 
             // colUnidad
             // 
@@ -335,7 +360,7 @@
             this.colUnidad.Name = "colUnidad";
             this.colUnidad.OptionsColumn.ReadOnly = true;
             this.colUnidad.Visible = true;
-            this.colUnidad.VisibleIndex = 4;
+            this.colUnidad.VisibleIndex = 5;
             // 
             // btnCerrar
             // 
@@ -445,6 +470,7 @@
             this.Size = new System.Drawing.Size(900, 500);
             this.Load += new System.EventHandler(this.Frm_SalidasPorDia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridSalidasDia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.movimientosPorDiaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSalidasDia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -473,5 +499,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.BindingSource movimientosPorDiaBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colFecha;
     }
 }

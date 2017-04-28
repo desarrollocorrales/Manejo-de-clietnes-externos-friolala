@@ -212,6 +212,8 @@
             // 
             // gvTarimas
             // 
+            this.gvTarimas.Appearance.FooterPanel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvTarimas.Appearance.FooterPanel.Options.UseFont = true;
             this.gvTarimas.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colarticulos,
             this.colnum_cajas,
@@ -221,7 +223,10 @@
             this.gvTarimas.GridControl = this.gridTarimas;
             this.gvTarimas.Name = "gvTarimas";
             this.gvTarimas.OptionsBehavior.Editable = false;
+            this.gvTarimas.OptionsView.ShowFooter = true;
             this.gvTarimas.OptionsView.ShowGroupPanel = false;
+            this.gvTarimas.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colfecha_ingreso, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colarticulos
             // 
@@ -232,6 +237,8 @@
             this.colarticulos.Caption = "Artículo";
             this.colarticulos.FieldName = "articulos.nombre";
             this.colarticulos.Name = "colarticulos";
+            this.colarticulos.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
             this.colarticulos.Visible = true;
             this.colarticulos.VisibleIndex = 1;
             // 
@@ -248,6 +255,8 @@
             this.colnum_cajas.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colnum_cajas.FieldName = "num_cajas";
             this.colnum_cajas.Name = "colnum_cajas";
+            this.colnum_cajas.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.colnum_cajas.Visible = true;
             this.colnum_cajas.VisibleIndex = 2;
             // 
@@ -264,6 +273,8 @@
             this.colpeso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colpeso.FieldName = "peso";
             this.colpeso.Name = "colpeso";
+            this.colpeso.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "peso", "{0:#,0.00}")});
             this.colpeso.Visible = true;
             this.colpeso.VisibleIndex = 3;
             // 

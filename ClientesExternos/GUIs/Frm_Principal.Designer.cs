@@ -68,6 +68,8 @@
             // 
             // navBarGroup1
             // 
+            this.navBarGroup1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navBarGroup1.Appearance.Options.UseFont = true;
             this.navBarGroup1.Caption = "Reportes";
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.itmInventarioCliente),
@@ -81,6 +83,7 @@
             this.itmInventarioCliente.Appearance.Options.UseFont = true;
             this.itmInventarioCliente.Caption = "Inventario por cliente";
             this.itmInventarioCliente.Name = "itmInventarioCliente";
+            this.itmInventarioCliente.SmallImage = global::ClientesExternos.Properties.Resources.invent_26;
             this.itmInventarioCliente.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmInventarioCliente_LinkClicked);
             // 
             // itmRecepcionesPorDia
@@ -89,6 +92,7 @@
             this.itmRecepcionesPorDia.Appearance.Options.UseFont = true;
             this.itmRecepcionesPorDia.Caption = "Reporte de Recepciones";
             this.itmRecepcionesPorDia.Name = "itmRecepcionesPorDia";
+            this.itmRecepcionesPorDia.SmallImage = global::ClientesExternos.Properties.Resources.inven_entrada;
             this.itmRecepcionesPorDia.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmRecepcionesPorDia_LinkClicked);
             // 
             // itmManiobrasDia
@@ -97,10 +101,13 @@
             this.itmManiobrasDia.Appearance.Options.UseFont = true;
             this.itmManiobrasDia.Caption = "Reporte de Salidas";
             this.itmManiobrasDia.Name = "itmManiobrasDia";
+            this.itmManiobrasDia.SmallImage = global::ClientesExternos.Properties.Resources.inven_salida;
             this.itmManiobrasDia.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.itmManiobrasDia_LinkClicked);
             // 
             // nbMenu
             // 
+            this.nbMenu.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nbMenu.Appearance.Options.UseFont = true;
             this.nbMenu.Caption = "Menú";
             this.nbMenu.Expanded = true;
             this.nbMenu.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {

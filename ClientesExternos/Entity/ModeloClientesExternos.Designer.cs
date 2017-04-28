@@ -176,6 +176,22 @@ namespace ClientesExternos.Entity
             }
         }
         private ObjectSet<vw_inventario> _vw_inventario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<plantillas_etiquetas> plantillas_etiquetas
+        {
+            get
+            {
+                if ((_plantillas_etiquetas == null))
+                {
+                    _plantillas_etiquetas = base.CreateObjectSet<plantillas_etiquetas>("plantillas_etiquetas");
+                }
+                return _plantillas_etiquetas;
+            }
+        }
+        private ObjectSet<plantillas_etiquetas> _plantillas_etiquetas;
 
         #endregion
 
@@ -228,6 +244,14 @@ namespace ClientesExternos.Entity
         {
             base.AddObject("vw_inventario", vw_inventario);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet plantillas_etiquetas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToplantillas_etiquetas(plantillas_etiquetas plantillas_etiquetas)
+        {
+            base.AddObject("plantillas_etiquetas", plantillas_etiquetas);
+        }
 
         #endregion
 
@@ -273,7 +297,15 @@ namespace ClientesExternos.Entity
         #endregion
 
         #region Propiedades primitivas
-    
+
+        public global::System.String codigo_nombre
+        {
+            get
+            {
+                return _codigo + " - " + _nombre;
+            }
+        }
+
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
@@ -979,6 +1011,139 @@ namespace ClientesExternos.Entity
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ClientextModel", Name="plantillas_etiquetas")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class plantillas_etiquetas : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto plantillas_etiquetas.
+        /// </summary>
+        /// <param name="id_etiqueta">Valor inicial de la propiedad id_etiqueta.</param>
+        /// <param name="nombre">Valor inicial de la propiedad nombre.</param>
+        /// <param name="comando">Valor inicial de la propiedad comando.</param>
+        public static plantillas_etiquetas Createplantillas_etiquetas(global::System.Int64 id_etiqueta, global::System.String nombre, global::System.String comando)
+        {
+            plantillas_etiquetas plantillas_etiquetas = new plantillas_etiquetas();
+            plantillas_etiquetas.id_etiqueta = id_etiqueta;
+            plantillas_etiquetas.nombre = nombre;
+            plantillas_etiquetas.comando = comando;
+            return plantillas_etiquetas;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id_etiqueta
+        {
+            get
+            {
+                return _id_etiqueta;
+            }
+            set
+            {
+                if (_id_etiqueta != value)
+                {
+                    Onid_etiquetaChanging(value);
+                    ReportPropertyChanging("id_etiqueta");
+                    _id_etiqueta = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id_etiqueta");
+                    Onid_etiquetaChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id_etiqueta;
+        partial void Onid_etiquetaChanging(global::System.Int64 value);
+        partial void Onid_etiquetaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String comando
+        {
+            get
+            {
+                return _comando;
+            }
+            set
+            {
+                OncomandoChanging(value);
+                ReportPropertyChanging("comando");
+                _comando = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("comando");
+                OncomandoChanged();
+            }
+        }
+        private global::System.String _comando;
+        partial void OncomandoChanging(global::System.String value);
+        partial void OncomandoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] imagen
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_imagen);
+            }
+            set
+            {
+                OnimagenChanging(value);
+                ReportPropertyChanging("imagen");
+                _imagen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("imagen");
+                OnimagenChanged();
+            }
+        }
+        private global::System.Byte[] _imagen;
+        partial void OnimagenChanging(global::System.Byte[] value);
+        partial void OnimagenChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -2320,6 +2485,30 @@ namespace ClientesExternos.Entity
         private global::System.String _tipo;
         partial void OntipoChanging(global::System.String value);
         partial void OntipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tarima_cliente
+        {
+            get
+            {
+                return _tarima_cliente;
+            }
+            set
+            {
+                Ontarima_clienteChanging(value);
+                ReportPropertyChanging("tarima_cliente");
+                _tarima_cliente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tarima_cliente");
+                Ontarima_clienteChanged();
+            }
+        }
+        private global::System.String _tarima_cliente;
+        partial void Ontarima_clienteChanging(global::System.String value);
+        partial void Ontarima_clienteChanged();
 
         #endregion
 

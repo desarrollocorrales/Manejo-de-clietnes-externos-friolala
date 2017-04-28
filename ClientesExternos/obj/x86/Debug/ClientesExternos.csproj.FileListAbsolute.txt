@@ -10,7 +10,6 @@ G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\Client
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.Frm_Principal.resources
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.exe.licenses
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Articulos.resources
-G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.csprojResolveAssemblyReference.cache
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Clientes.resources
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Usuarios.resources
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_Entradas.resources
@@ -22,3 +21,6 @@ G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\Cl
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_EntradasPorDia.resources
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.GUIs.UserControls.Frm_SalidasPorDia.resources
 G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.Reportes.rptMovimientosPorDia.resources
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\Docs Backup\Leeme.txt
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\bin\Debug\Sofbr.Utils.dll
+G:\Github\Manejo-de-clietnes-externos-friolala\ClientesExternos\obj\x86\Debug\ClientesExternos.csprojResolveAssemblyReference.cache

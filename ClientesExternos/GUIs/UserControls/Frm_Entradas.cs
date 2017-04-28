@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ClientesExternos.Modelos;
 using ClientesExternos.Entity;
 using ClientesExternos.Reportes;
+using Sofbr.Utils.Impresoras;
 
 namespace ClientesExternos.GUIs.UserControls
 {
@@ -269,9 +270,12 @@ namespace ClientesExternos.GUIs.UserControls
         {
             try
             {
-                CrearEtiquetas();
-                Imprimir();
-                LimpiarControles();
+                if (Validarimprimir() == true)
+                {
+                    CrearEtiquetas();
+                    Imprimir();
+                    LimpiarControles();
+                }
             }
             catch (Exception ex)
             {
@@ -280,9 +284,11 @@ namespace ClientesExternos.GUIs.UserControls
         }
         private void Imprimir()
         {
+            var cliente = (clientes)cmbClientes.SelectedItem;
+            var sRespaldoPath = Application.StartupPath + "\\Docs Backup\\" + cliente.serie + "_E_" + getFechaServer().ToString("ddMMyyyy_HHmmss") + ".pdf";
             try
             {
-                var Contexto = new ClientextEntities(entityString);
+                var Contexto = new ClientextEntities(entityString);      
                 var lstAuxiliar = Contexto.tarimas_entradas.ToList();
                 var lstTarimas_A_Imprimir = new List<tarimas_entradas>();
                 foreach (long ID in lstIDsTarimasImprimir)
@@ -295,6 +301,10 @@ namespace ClientesExternos.GUIs.UserControls
                 NuevaEntrada.Usuario = DatosDeApp.usuario_en_turno;
                 NuevaEntrada.Fecha = dtpFechaRecepcion.Value;
                 NuevaEntrada.DataSource = lstTarimas_A_Imprimir;
+
+                //Respaldos de documento
+                NuevaEntrada.ExportToPdf(sRespaldoPath);
+
                 NuevaEntrada.ShowPreviewDialog();
 
                 Contexto.Dispose();
@@ -306,45 +316,49 @@ namespace ClientesExternos.GUIs.UserControls
         }
         private void CrearEtiquetas()
         {
+            var lstEtiquetas = new StringBuilder();
             lstIDsTarimasImprimir = new List<long>();
 
-            if (Validarimprimir() == true)
-            {                
-                try
+            try
+            {
+                var Contexto = new ClientextEntities(entityString);
+                var comando = Contexto.plantillas_etiquetas.FirstOrDefault(o => o.nombre == "ENTRADA").comando;
+
+                tarimas_entradas tarima;
+                foreach (tarimas_entradas tar_ent in lstTarimasEntrada)
                 {
-                    var Contexto = new ClientextEntities(entityString);
-                    tarimas_entradas tarima;
-                    foreach (tarimas_entradas tar_ent in lstTarimasEntrada)
-                    {
-                        tarima = new tarimas_entradas();
-                        tarima.id_cliente = tar_ent.clientes.id_cliente;
-                        tarima.id_articulo = tar_ent.articulos.id_articulo;                        
-                        tarima.num_cajas = tar_ent.num_cajas;
-                        tarima.peso = tar_ent.peso;
-                        tarima.fecha_ingreso = tar_ent.fecha_ingreso;
-                        tarima.numero_tarima_cliente = tar_ent.numero_tarima_cliente;
-                        tarima.id_usuario = DatosDeApp.usuario_en_turno.id_usuario;
+                    tarima = new tarimas_entradas();
+                    tarima.id_cliente = tar_ent.clientes.id_cliente;
+                    tarima.id_articulo = tar_ent.articulos.id_articulo;
+                    tarima.num_cajas = tar_ent.num_cajas;
+                    tarima.peso = tar_ent.peso;
+                    tarima.fecha_ingreso = tar_ent.fecha_ingreso;
+                    tarima.numero_tarima_cliente = tar_ent.numero_tarima_cliente;
+                    tarima.id_usuario = DatosDeApp.usuario_en_turno.id_usuario;
 
-                        Contexto.tarimas_entradas.AddObject(tarima);
-                        Contexto.SaveChanges();
-
-                        tarima.numero_etiqueta =
-                              tarima.id_cliente.ToString().PadLeft(4, '0')
-                            + tarima.id_tarima.ToString().PadLeft(8, '0') 
-                            + getCheckDigit(tarima.id_tarima.ToString());
-                        
-                        Contexto.SaveChanges();
-
-                        lstIDsTarimasImprimir.Add(tarima.id_tarima);
-                    }
+                    Contexto.tarimas_entradas.AddObject(tarima);
                     Contexto.SaveChanges();
 
-                    Contexto.Dispose();
+                    tarima.numero_etiqueta =
+                          tarima.id_cliente.ToString().PadLeft(4, '0')
+                        + tarima.id_tarima.ToString().PadLeft(8, '0')
+                        + getCheckDigit(tarima.id_tarima.ToString());
+
+                    Contexto.SaveChanges();
+
+                    lstIDsTarimasImprimir.Add(tarima.id_tarima);
+
+                    lstEtiquetas.AppendLine(CrearComando(comando, tarima));
                 }
-                catch (Exception ex)
-                {
-                    MostrarExcepcion(ex);
-                }
+                Contexto.SaveChanges();
+
+                ImprimirEtiquetas(lstEtiquetas.ToString());
+
+                Contexto.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MostrarExcepcion(ex);
             }
         }
         private bool Validarimprimir()
@@ -395,6 +409,27 @@ namespace ClientesExternos.GUIs.UserControls
 
             int iCheckSum = (10 - (iDigit % 10)) % 10;
             return iCheckSum.ToString();
+        }
+
+        /***** Impresion de etiquetas *****/
+        private void ImprimirEtiquetas(string Comando)
+        {
+            string ImpresoraDeEtiquetas = Properties.Settings.Default.Impresora;
+            RawPrinter.SendToPrinter("Etiqueta Entrada", Comando, ImpresoraDeEtiquetas);
+        }
+        private string CrearComando(string Comando, tarimas_entradas tarima)
+        {
+            string ComandoReemplazado = Comando;
+
+            ComandoReemplazado = ComandoReemplazado.Replace("{CLIENTE}", tarima.clientes.nombre);
+            ComandoReemplazado = ComandoReemplazado.Replace("{CODIGO}", tarima.articulos.codigo);
+            ComandoReemplazado = ComandoReemplazado.Replace("{ARTICULO}", tarima.articulos.nombre);
+            ComandoReemplazado = ComandoReemplazado.Replace("{CAJAS}", tarima.num_cajas.ToString());
+            ComandoReemplazado = ComandoReemplazado.Replace("{PESO}", tarima.peso.ToString());
+            ComandoReemplazado = ComandoReemplazado.Replace("{FECHA}", tarima.fecha_ingreso.ToString("dd/mm/yyyy"));
+            ComandoReemplazado = ComandoReemplazado.Replace("0000000000000", tarima.numero_etiqueta);
+
+            return ComandoReemplazado;
         }
     }
 }

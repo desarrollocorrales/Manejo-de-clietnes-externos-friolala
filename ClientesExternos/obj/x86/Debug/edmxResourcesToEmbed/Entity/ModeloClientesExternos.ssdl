@@ -3,12 +3,14 @@
   <EntityContainer Name="ClientextModelStoreContainer">
     <EntitySet Name="articulos" EntityType="ClientextModel.Store.articulos" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="clientes" EntityType="ClientextModel.Store.clientes" store:Type="Tables" Schema="friolala_clientext" />
+    <EntitySet Name="plantillas_etiquetas" EntityType="ClientextModel.Store.plantillas_etiquetas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="tarimas_entradas" EntityType="ClientextModel.Store.tarimas_entradas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="tarimas_salidas" EntityType="ClientextModel.Store.tarimas_salidas" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="usuarios" EntityType="ClientextModel.Store.usuarios" store:Type="Tables" Schema="friolala_clientext" />
     <EntitySet Name="vw_inventario" EntityType="ClientextModel.Store.vw_inventario" store:Type="Views" store:Schema="friolala_clientext" store:Name="vw_inventario">
       <DefiningQuery>SELECT
       `vw_inventario`.`numero_etiqueta`, 
+      `vw_inventario`.`tarima_cliente`, 
       `vw_inventario`.`id_cliente`, 
       `vw_inventario`.`codigo`, 
       `vw_inventario`.`articulo`, 
@@ -89,6 +91,15 @@
     <Property Name="id_usuario_ultima_modificacion" Type="uint" />
     <Property Name="fecha_ultima_modificacion" Type="datetime" />
   </EntityType>
+  <EntityType Name="plantillas_etiquetas">
+    <Key>
+      <PropertyRef Name="id_etiqueta" />
+    </Key>
+    <Property Name="id_etiqueta" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="comando" Type="text" Nullable="false" />
+    <Property Name="imagen" Type="longblob" />
+  </EntityType>
   <EntityType Name="tarimas_entradas">
     <Key>
       <PropertyRef Name="id_tarima" />
@@ -140,6 +151,7 @@
       <PropertyRef Name="tipo" />
     </Key>
     <Property Name="numero_etiqueta" Type="varchar" MaxLength="13" />
+    <Property Name="tarima_cliente" Type="varchar" MaxLength="50" />
     <Property Name="id_cliente" Type="uint" Nullable="false" />
     <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="articulo" Type="varchar" Nullable="false" MaxLength="80" />

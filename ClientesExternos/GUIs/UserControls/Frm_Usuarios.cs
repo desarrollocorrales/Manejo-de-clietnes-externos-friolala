@@ -211,6 +211,7 @@ namespace ClientesExternos.GUIs.UserControls
             }
             else
             {
+                lblAccion.Text = "Modificar Usuario";
                 var usuario = (usuarios)lstbUsuarios.SelectedItem;
                 txbNombreUsuario.Text = usuario.nombre_usuario;
                 txbNombreCompleto.Text = usuario.nombre_completo;
@@ -291,6 +292,7 @@ namespace ClientesExternos.GUIs.UserControls
             }
             else
             {
+                lblAccion.Text = "Eliminar Usuario";
                 var usuario = (usuarios)lstbUsuarios.SelectedItem;
                 txbNombreUsuario.Text = usuario.nombre_usuario;
                 txbNombreCompleto.Text = usuario.nombre_completo;

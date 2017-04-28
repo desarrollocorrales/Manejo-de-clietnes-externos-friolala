@@ -34,6 +34,7 @@
             this.entradasPorDiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvEntradasDia = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFecha = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarimaCliente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNumeroEtiqueta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCodigo_Articulo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -146,9 +147,11 @@
             this.gvEntradasDia.Appearance.GroupButton.Options.UseForeColor = true;
             this.gvEntradasDia.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(247)))));
             this.gvEntradasDia.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(216)))), ((int)(((byte)(247)))));
+            this.gvEntradasDia.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gvEntradasDia.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
             this.gvEntradasDia.Appearance.GroupFooter.Options.UseBackColor = true;
             this.gvEntradasDia.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.gvEntradasDia.Appearance.GroupFooter.Options.UseFont = true;
             this.gvEntradasDia.Appearance.GroupFooter.Options.UseForeColor = true;
             this.gvEntradasDia.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(109)))), ((int)(((byte)(185)))));
             this.gvEntradasDia.Appearance.GroupPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(236)))), ((int)(((byte)(254)))));
@@ -198,6 +201,7 @@
             this.gvEntradasDia.Appearance.VertLine.Options.UseBackColor = true;
             this.gvEntradasDia.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colCliente,
+            this.colFecha,
             this.colTarimaCliente,
             this.colNumeroEtiqueta,
             this.colCodigo_Articulo,
@@ -227,6 +231,21 @@
             this.colCliente.FieldName = "Cliente";
             this.colCliente.Name = "colCliente";
             // 
+            // colFecha
+            // 
+            this.colFecha.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.AppearanceCell.Options.UseFont = true;
+            this.colFecha.AppearanceCell.Options.UseTextOptions = true;
+            this.colFecha.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFecha.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colFecha.AppearanceHeader.Options.UseFont = true;
+            this.colFecha.AppearanceHeader.Options.UseTextOptions = true;
+            this.colFecha.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFecha.FieldName = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.Visible = true;
+            this.colFecha.VisibleIndex = 0;
+            // 
             // colTarimaCliente
             // 
             this.colTarimaCliente.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,7 +259,7 @@
             this.colTarimaCliente.FieldName = "TarimaCliente";
             this.colTarimaCliente.Name = "colTarimaCliente";
             this.colTarimaCliente.Visible = true;
-            this.colTarimaCliente.VisibleIndex = 0;
+            this.colTarimaCliente.VisibleIndex = 1;
             // 
             // colNumeroEtiqueta
             // 
@@ -256,7 +275,7 @@
             this.colNumeroEtiqueta.FieldName = "NumeroEtiqueta";
             this.colNumeroEtiqueta.Name = "colNumeroEtiqueta";
             this.colNumeroEtiqueta.Visible = true;
-            this.colNumeroEtiqueta.VisibleIndex = 1;
+            this.colNumeroEtiqueta.VisibleIndex = 2;
             // 
             // colCodigo_Articulo
             // 
@@ -267,8 +286,6 @@
             this.colCodigo_Articulo.Caption = "Artículo";
             this.colCodigo_Articulo.FieldName = "Codigo_Articulo";
             this.colCodigo_Articulo.Name = "colCodigo_Articulo";
-            this.colCodigo_Articulo.Visible = true;
-            this.colCodigo_Articulo.VisibleIndex = 5;
             // 
             // colCajas
             // 
@@ -283,7 +300,7 @@
             this.colCajas.FieldName = "Cajas";
             this.colCajas.Name = "colCajas";
             this.colCajas.Visible = true;
-            this.colCajas.VisibleIndex = 2;
+            this.colCajas.VisibleIndex = 3;
             // 
             // colPeso
             // 
@@ -300,7 +317,7 @@
             this.colPeso.FieldName = "Peso";
             this.colPeso.Name = "colPeso";
             this.colPeso.Visible = true;
-            this.colPeso.VisibleIndex = 3;
+            this.colPeso.VisibleIndex = 4;
             // 
             // colUnidad
             // 
@@ -312,7 +329,7 @@
             this.colUnidad.Name = "colUnidad";
             this.colUnidad.OptionsColumn.ReadOnly = true;
             this.colUnidad.Visible = true;
-            this.colUnidad.VisibleIndex = 4;
+            this.colUnidad.VisibleIndex = 5;
             // 
             // btnCerrar
             // 
@@ -483,5 +500,6 @@
         private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private System.Windows.Forms.Label label5;
+        private DevExpress.XtraGrid.Columns.GridColumn colFecha;
     }
 }

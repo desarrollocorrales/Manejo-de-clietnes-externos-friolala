@@ -142,5 +142,6 @@ namespace ClientesExternos.GUIs
             frmSalidasPorDia.Dock = DockStyle.Fill;
             frmSalidasPorDia.BringToFront();
         }
+
     }
 }

@@ -132,12 +132,21 @@ namespace ClientesExternos.GUIs.UserControls
 
         private void btnGenerarSalida_Click(object sender, EventArgs e)
         {
-            GenerarSalida();
+            try
+            {
+                GenerarSalida();
+            }
+            catch (Exception ex)
+            {
+                MostrarExcepcion(ex);
+            }
         }
         private void GenerarSalida()
         {
             if (ValidarSalida() == true)
             {
+                var sRespaldoPath = Application.StartupPath + "\\Docs Backup\\" + "Salida_" + getFechaServer().ToString("ddMMyyyy_HHmmss") + ".pdf";
+
                 var lstTarimas = (List<SalidasGrid>)gridSalidas.DataSource;
                 var Contexto = new ClientextEntities(entityString);
                 tarimas_salidas Maniobra;
@@ -170,6 +179,10 @@ namespace ClientesExternos.GUIs.UserControls
                 xrSalida.Usuario = DatosDeApp.usuario_en_turno.nombre_completo;
                 xrSalida.Fecha = getFechaServer();
                 xrSalida.DataSource = lstTarimas;
+
+                //Respaldo de documento
+                xrSalida.ExportToPdf(sRespaldoPath);
+
                 xrSalida.ShowPreviewDialog();
             }
         }

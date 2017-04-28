@@ -51,6 +51,7 @@
       <End Role="tarimas_salidas" EntitySet="tarimas_salidas" />
     </AssociationSet>
     <EntitySet Name="vw_inventario" EntityType="ClientextModel.vw_inventario" />
+    <EntitySet Name="plantillas_etiquetas" EntityType="ClientextModel.plantillas_etiquetas" />
   </EntityContainer>
   <EntityType Name="articulos">
     <Key>
@@ -287,5 +288,15 @@
     <Property Type="Int64" Name="num_cajas" Nullable="false" />
     <Property Type="Decimal" Name="peso" Nullable="false" />
     <Property Type="String" Name="tipo" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="tarima_cliente" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="plantillas_etiquetas">
+    <Key>
+      <PropertyRef Name="id_etiqueta" />
+    </Key>
+    <Property Type="Int64" Name="id_etiqueta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="comando" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="imagen" MaxLength="Max" FixedLength="false" />
   </EntityType>
 </Schema>

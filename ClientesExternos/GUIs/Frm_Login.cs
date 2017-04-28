@@ -80,5 +80,20 @@ namespace ClientesExternos.GUIs
         {
 
         }
+
+        private void txbContrasenia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    IniciarSesion();
+                }
+                catch(Exception ex)
+                {
+                    MostrarExcepcion(ex);
+                }
+            }
+        }
     }
 }

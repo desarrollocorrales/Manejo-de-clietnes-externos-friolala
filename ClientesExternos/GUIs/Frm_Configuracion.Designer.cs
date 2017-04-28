@@ -44,13 +44,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbImpresoras = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCargar
             // 
             this.btnCargar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCargar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargar.Location = new System.Drawing.Point(543, 212);
+            this.btnCargar.Location = new System.Drawing.Point(543, 251);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(65, 30);
             this.btnCargar.TabIndex = 31;
@@ -62,7 +64,7 @@
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(320, 269);
+            this.btnCancelar.Location = new System.Drawing.Point(320, 285);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 30);
             this.btnCancelar.TabIndex = 30;
@@ -74,7 +76,7 @@
             // 
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnGuardar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(230, 269);
+            this.btnGuardar.Location = new System.Drawing.Point(230, 285);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(84, 30);
             this.btnGuardar.TabIndex = 29;
@@ -87,7 +89,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 219);
+            this.label7.Location = new System.Drawing.Point(87, 258);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 16);
             this.label7.TabIndex = 28;
@@ -98,15 +100,15 @@
             this.cmbDatabase.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbDatabase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDatabase.FormattingEnabled = true;
-            this.cmbDatabase.Location = new System.Drawing.Point(137, 214);
+            this.cmbDatabase.Location = new System.Drawing.Point(198, 253);
             this.cmbDatabase.Name = "cmbDatabase";
-            this.cmbDatabase.Size = new System.Drawing.Size(400, 26);
+            this.cmbDatabase.Size = new System.Drawing.Size(339, 26);
             this.cmbDatabase.TabIndex = 27;
             // 
             // txbPort
             // 
             this.txbPort.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txbPort.Location = new System.Drawing.Point(137, 182);
+            this.txbPort.Location = new System.Drawing.Point(198, 221);
             this.txbPort.Name = "txbPort";
             this.txbPort.Size = new System.Drawing.Size(70, 26);
             this.txbPort.TabIndex = 26;
@@ -117,7 +119,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(74, 187);
+            this.label6.Location = new System.Drawing.Point(135, 226);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 25;
@@ -126,7 +128,7 @@
             // txbPassword
             // 
             this.txbPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txbPassword.Location = new System.Drawing.Point(137, 150);
+            this.txbPassword.Location = new System.Drawing.Point(198, 189);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '*';
             this.txbPassword.Size = new System.Drawing.Size(400, 26);
@@ -137,7 +139,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 155);
+            this.label5.Location = new System.Drawing.Point(104, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 16);
             this.label5.TabIndex = 23;
@@ -146,7 +148,7 @@
             // txbUser
             // 
             this.txbUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txbUser.Location = new System.Drawing.Point(137, 118);
+            this.txbUser.Location = new System.Drawing.Point(198, 157);
             this.txbUser.Name = "txbUser";
             this.txbUser.Size = new System.Drawing.Size(400, 26);
             this.txbUser.TabIndex = 22;
@@ -156,7 +158,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(70, 123);
+            this.label4.Location = new System.Drawing.Point(131, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 16);
             this.label4.TabIndex = 21;
@@ -165,7 +167,7 @@
             // txbServer
             // 
             this.txbServer.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txbServer.Location = new System.Drawing.Point(137, 86);
+            this.txbServer.Location = new System.Drawing.Point(198, 125);
             this.txbServer.Name = "txbServer";
             this.txbServer.Size = new System.Drawing.Size(400, 26);
             this.txbServer.TabIndex = 20;
@@ -175,7 +177,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 91);
+            this.label3.Location = new System.Drawing.Point(124, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 16);
             this.label3.TabIndex = 19;
@@ -203,11 +205,34 @@
             this.label2.Text = "FRIOLALA";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(26, 98);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(166, 16);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "Impresora de etiquetas:";
+            // 
+            // cmbImpresoras
+            // 
+            this.cmbImpresoras.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbImpresoras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbImpresoras.FormattingEnabled = true;
+            this.cmbImpresoras.Location = new System.Drawing.Point(198, 93);
+            this.cmbImpresoras.Name = "cmbImpresoras";
+            this.cmbImpresoras.Size = new System.Drawing.Size(339, 26);
+            this.cmbImpresoras.TabIndex = 33;
+            // 
             // Frm_Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(634, 311);
+            this.ClientSize = new System.Drawing.Size(634, 327);
+            this.Controls.Add(this.cmbImpresoras);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -253,5 +278,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbImpresoras;
     }
 }

@@ -94,5 +94,17 @@ namespace ClientesExternos.Properties {
                 this["EntityString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Impresora {
+            get {
+                return ((string)(this["Impresora"]));
+            }
+            set {
+                this["Impresora"] = value;
+            }
+        }
     }
 }

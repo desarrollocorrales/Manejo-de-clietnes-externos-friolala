@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing.Printing;
 
 namespace ClientesExternos.GUIs
 {
@@ -28,6 +29,7 @@ namespace ClientesExternos.GUIs
             txbUser.Text = Config.User;
             txbPassword.Text = Config.Pass;
             txbPort.Text = Config.Port;
+            CargarImpresoras();
         }
 
         private void txbPort_KeyPress(object sender, KeyPressEventArgs e)
@@ -75,6 +77,7 @@ namespace ClientesExternos.GUIs
                     Config.Port = txbPort.Text;
                     Config.Database = Convert.ToString(cmbDatabase.SelectedItem);
                     Config.EntityString = NewStringConn;
+                    Config.Impresora = Convert.ToString(cmbImpresoras.SelectedItem);
 
                     Config.Save();
 
@@ -151,6 +154,17 @@ namespace ClientesExternos.GUIs
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CargarImpresoras()
+        {
+            List<string> lstImpresoras = new List<string>();
+            foreach (string printer in PrinterSettings.InstalledPrinters)
+            {
+                lstImpresoras.Add(printer);
+            }
+
+            cmbImpresoras.DataSource = lstImpresoras;
         }
     }
 }
